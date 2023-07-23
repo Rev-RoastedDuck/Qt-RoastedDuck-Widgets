@@ -1,4 +1,5 @@
 # QT-组件 QT-material-widgets
+🎨 基于Qt小部件的实现😊
 🎨 Qt widgets-based implementation of the Material Design specification.😊
 
 ## 内容列表
