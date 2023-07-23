@@ -8,6 +8,8 @@
 
 # 滑动侧边栏
 ## 1.custom_btn.py
+### 效果
+![滑动侧边栏](./README/Animation.gif)
 ### 功能
 - 按钮颜色动画
 - 图标与文字分离
