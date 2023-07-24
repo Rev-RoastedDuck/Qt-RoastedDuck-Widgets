@@ -11,9 +11,9 @@
 <hr/>
 
 # 滑动侧边栏
+## 效果
+![滑动侧边栏](./README/伸缩栏.gif)
 ## 1.custom_btn.py
-### 效果
-![滑动侧边栏](./README/Animation.gif)
 ### 功能
 - 按钮颜色动画
 - 图标与文字分离
@@ -32,9 +32,24 @@
 ### 说明
 - 在main.config_init(),可以修改变化后的伸缩栏宽度和按钮宽度，以达到更加美观的效果😌
 
+<hr/>
+
+# 波纹按钮
+## 效果
+![波纹按钮](./README/波纹按钮.gif)
+## 悬浮波纹按钮.py(命名好像有点问题
+### 功能
+- 鼠标划入划出按钮时，出现波纹动画
+- 解决了背景颜色覆盖按钮文字的问题
+### 说明
+1. 你可以在MyPushButton.animationConfig()配置动画参数
+2.  在初始化时，你需要传入两个参数，一个是geometry(按钮的大小和位置)，一个是minSize(按钮的最小尺寸)
+3.  同时，你可能还需要修改字体的大小，在MyPushButton.ui()里面
+
 
 <hr/>
 
 # 联系方式
 - Email:2731491939@qq.com
+- WeChat:Roast_71
 - CsdnBlog:Rev_RoastDuck
