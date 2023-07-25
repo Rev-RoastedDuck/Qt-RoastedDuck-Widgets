@@ -38,7 +38,7 @@ class MyPushButton(QFrame):
 
     def animationConfig(self):
         self.corner_radius = 10                                    # 按钮的圆角半径
-        self.radiusVar = 2                                         # 半径变化值
+        self.radius_var = 2                                         # 半径变化值
         self.radius = 0                                            # 起始半径
         self.max_radius = (self.width()**2+self.height()**2)**0.5  # 最大半径
         self.center = None                                         # 鼠标点击坐标
@@ -50,14 +50,14 @@ class MyPushButton(QFrame):
         self.timer.timeout.connect(self.incRadius)
 
     def incRadius(self):
-        self.radius += self.radiusVar
+        self.radius += self.radius_var
         if self.radius > self.max_radius:
             self.timer.stop()
             return
         self.update()
 
     def decRadius(self):
-        self.radius -= self.radiusVar
+        self.radius -= self.radius_var
         if self.radius < 0:
             self.timer.stop()
             return
