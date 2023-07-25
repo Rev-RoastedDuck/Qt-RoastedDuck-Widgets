@@ -45,7 +45,7 @@
 1. 你可以在MyPushButton.animationConfig()配置动画参数
 2.  在初始化时，你需要传入两个参数，一个是geometry(按钮的大小和位置)，一个是minSize(按钮的最小尺寸)
 3.  同时，你可能还需要修改字体的大小，在MyPushButton.ui()里面
-4.  此外，你甚至可以尝试把PushButton换掉，把这个样式添加到别的组件上
+4.  此外，你甚至可以尝试把PushButton换掉，把这个样式添加到别的组件上✨
 
 
 <hr/>
