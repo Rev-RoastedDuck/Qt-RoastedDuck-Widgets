@@ -50,6 +50,21 @@
 
 <hr/>
 
+# 流光按钮
+## 效果
+![流光按钮](./README/流光按钮.gif)
+## 1.流光按钮.py(命名好像有点问题😓
+### 功能
+- 鼠标悬浮时，按钮边框会出现流光
+### 说明
+1. 你可以在RPushButton.animationConfig()种修改定时时间，来控制流光的速度
+2.  在初始化之后，你需要设置按钮的geometry参数
+3.  在styleSheet(样式表)，你可以设置Rborder-width，来配置按钮边框的宽度(流光的宽度)
+4.  RPushButton.createGradient()中，你可以修改流光的颜色🎊
+5.  代码中有具体的使用方法
+
+<hr/>
+
 # 联系方式
 - Email:2731491939@qq.com
 - WeChat:Roast_71
