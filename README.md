@@ -58,10 +58,18 @@
 - 鼠标悬浮时，按钮边框会出现流光
 ### 说明
 1. **在styleSheet(样式表)，你可以通过设置Rborder-width，来配置按钮边框的宽度(流光的宽度)**
-2. 在初始化之后，你需要设置按钮的geometry参数
-3. 你可以在RPushButton.animationConfig()种修改定时时间，来控制流光的速度
-4. RPushButton.createGradient()中，你可以修改流光的颜色🎊
-5. 代码中有具体的使用方法
+3. 在初始化之后，你需要设置按钮的geometry参数
+4. 你可以在RPushButton.animationConfig()种修改定时时间，来控制流光的速度
+5. RPushButton.createGradient()中，你可以修改流光的颜色🎊
+6. 配置完之后，需要调用RPushButton.setStyleSheetConfig()，使配置生效❗
+7. 代码中有具体的使用方法
+8. 这个代码是优化过后的，可以直接调用，直接配置样式表和geometry就可以啦
+
+## 1.流光按钮_视频演示.py(命名好像有点问题😒
+### 说明
+1. 这个是B站上的演示代码，并没有经过优化
+
+
 
 <hr/>
 
