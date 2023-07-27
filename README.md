@@ -57,9 +57,9 @@
 ### 功能
 - 鼠标悬浮时，按钮边框会出现流光
 ### 说明
-1. 你可以在RPushButton.animationConfig()种修改定时时间，来控制流光的速度
+1. **在styleSheet(样式表)，你可以通过设置Rborder-width，来配置按钮边框的宽度(流光的宽度)**
 2. 在初始化之后，你需要设置按钮的geometry参数
-3. **在styleSheet(样式表)，你可以设置Rborder-width，来配置按钮边框的宽度(流光的宽度)**
+3. 你可以在RPushButton.animationConfig()种修改定时时间，来控制流光的速度
 4. RPushButton.createGradient()中，你可以修改流光的颜色🎊
 5. 代码中有具体的使用方法
 
