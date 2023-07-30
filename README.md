@@ -79,6 +79,7 @@
    - Rborder-width:卡片的边框宽度
    - Rcolor:流光的颜色
    - border-radius:卡片圆角大小
+2. 由于GIF帧率的问题，效果图片会出现残影
 
 
 
