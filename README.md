@@ -69,6 +69,17 @@
 ### 说明
 1. 这个是B站上的演示代码，并没有经过优化
 
+# 流光展示卡片
+## 效果
+![流光展示卡片](./README/流光展示卡片.gif)
+### 功能
+- 看上面😂
+### 说明
+1. 老样子，你可以在styleSheet修改样式，之后需要调用DynamicBorderFrame.setStyleSheetConfig()使样式生效
+   - Rborder-width:卡片的边框宽度
+   - Rcolor:流光的颜色
+   - border-radius:卡片圆角大小
+
 
 
 <hr/>
