@@ -62,6 +62,34 @@
    - RWavyButton.setText: 设置按钮文字内容
    - RWavyButton.setIcon: 设置按钮图标
 3. 同样的，在配置完样式后，需要调用RWavyButton.setStyleSheetConfig()来使之生效
+### 示例
+```python
+    # 按钮样式配置
+    btn = RWavyButton(w)
+    btn.setGeometry(QRect(290, 280, 110, 35))
+    btn.setStyleSheet(u"#RWavyButton{"
+                       "    background-color: rgb(46, 22, 177);"
+                       "	border-radius:10px;"              # 设置圆角
+                      "    R-full-color:rgb(255, 89, 0);"     # 设置填充颜色
+                      "    R-font-color:rgb(255, 255, 255);"  # 设置字体颜色
+                      "}"
+                      )
+
+    # 设置字体
+    font = QFont()
+    font.setPointSize(10)
+    btn.setFont(font)
+
+    # 填写文字内容
+    btn.setText(" 会变色喔")
+
+    # 设置图标
+    icon = QIcon()
+    icon.addFile(u":/\u56fe\u6807/\u56fe\u6807/\u4fdd\u5b58.png", QSize(24,24), QIcon.Normal, QIcon.Off)
+    btn.setIcon(icon)
+
+    btn.setStyleSheetConfig()
+```
 
 
 <hr/>
@@ -84,6 +112,10 @@
 ## 1.流光按钮_视频演示.py(命名好像有点问题😒
 ### 说明
 1. 这个是B站上的演示代码，并没有经过优化
+
+
+<hr/>
+
 
 # 流光展示卡片
 ## 效果
