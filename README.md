@@ -180,7 +180,7 @@
 # 联系方式
 - Email:2731491939@qq.com
 - WeChat:Roast_71
-- CsdnBlog:Rev_RoastDuck
+- csdnBlog:Rev_RoastDuck
 
 # 声明
 __本内容仅供学习与交流，禁止任何形式的用于商业用途__
