@@ -9,7 +9,9 @@
     - [波纹按钮](#波纹按钮)
     - [流光按钮](#流光按钮)
     - [流光展示卡片](#流光展示卡片)
+    - [发散按钮容器](#发散按钮容器)
 - [联系方式](#联系方式)
+- [声明](#声明)
 
 <hr/>
 
@@ -134,7 +136,51 @@
 
 <hr/>
 
+# 发散按钮容器
+## 效果
+![发散按钮容器](./README/发散按钮容器.gif)
+## 1.main.py
+### 功能
+- 展示了发散按钮容器的使用方法✨
+
+## 2.RButtonBox.py
+### 功能
+- 实现了RButtonBox展开和伸缩的功能✨
+### 说明
+1. 参数说明
+   - RExpandBox.locatorBoxWidgetWidth: 定位按钮的宽度
+   - RExpandBox.locatorBoxSize: 定位组件的尺寸
+   - RExpandBox.locatorBoxWidgetSpacing: 定位按钮间的间隔
+   - RExpandBox.expandBoxWidgetWidth: 伸缩组件内按钮的宽度
+   - RExpandBox.expandBoxWidgetSize: 伸缩组件的尺寸
+   - RExpandBox.expandBoxWidgetSpacing: 伸缩组件内按钮的间隔
+   - RExpandBox.animationDuration: 每个按钮的动画的时间
+2. 可以通过RExpandBox.addWidget()向RExpandBox添加组件
+3. 配置完RExpandBox后，需要调用RExpandBox.setConfig()使配置生效❗
+4. styleShell中按钮的圆角大小需要为按钮宽度的二分之一倍❗
+
+## 3.RGridLayout.py
+### 功能
+- 实现了一个简单的网格布局器
+- RGridLayout的padding自适应
+### 说明
+1. 参数说明
+   - RGridLayout.grid_width: RGridLayout内每一个小格子的宽度
+   - RGridLayout.grid_height: RGridLayout内每一个小格子的高度
+   - RGridLayout.spacing: RGridLayout内每个小格子的间距
+2. 实例化 RGridLayout 的时候，需要传入布局器的尺寸
+3. 通过RGridLayout.addWidget(w:QWidget,row: int,column: int)，你可以添加组件到布局器中
+
+
+
+<hr/>
+
+
+
 # 联系方式
 - Email:2731491939@qq.com
 - WeChat:Roast_71
 - CsdnBlog:Rev_RoastDuck
+
+# 声明
+__本内容仅供学习与交流，禁止任何形式的用于商业用途__
