@@ -60,38 +60,12 @@ class RExpandBox(QFrame):
     def ui(self):
         self.setObjectName(u"frameContainer")
         self.setFixedSize(self.expandBoxWidgetSize)
-
-
-        self.frame = QFrame(self)
-        self.frame.setObjectName(u"frameExpandBox")
-        self.frame.setGeometry(QRect(QPoint(0, 0),self.expandBoxWidgetSize))
-
-
-        self.buttonBox = RGridLayout(self, self.expandBoxWidgetSize)
-        self.buttonBox.setGeometry(0, 0, 0, 0)
-        self.buttonBox.grid_width = self.expandBoxWidgetWidth
-        self.buttonBox.grid_height = self.expandBoxWidgetWidth
-        self.buttonBox.spacing = self.expandBoxWidgetSpacing
-        self.buttonBox.addWidget(self.pushButton_NW, 0, 0)
-        self.buttonBox.addWidget(self.pushButton_N, 0, 1)
-        self.buttonBox.addWidget(self.pushButton_NE, 0, 2)
-        self.buttonBox.addWidget(self.pushButton_W, 1, 0)
-        self.buttonBox.addWidget(self.pushButton_Center, 1, 1)
-        self.buttonBox.addWidget(self.pushButton_E, 1, 2)
-        self.buttonBox.addWidget(self.pushButton_SW, 2, 0)
-        self.buttonBox.addWidget(self.pushButton_S, 2, 1)
-        self.buttonBox.addWidget(self.pushButton_SE, 2, 2)
-        self.buttonBox.setStyleSheet("#RButtonBox{"
-                        "	background-color: rgba(255, 0, 255,0);\n"
-                        "}"
-                        )
-
         self.frame_3 = QFrame(self)
         self.frame_3.setFixedSize(self.locatorBoxSize)
-        self.frame_3.move((self.width()-self.frame_3.width())//2,(self.height()-self.frame_3.height())//2)
+        self.frame_3.move((self.width() - self.frame_3.width()) // 2, (self.height() - self.frame_3.height()) // 2)
         self.frame_3.setStyleSheet(u"QFrame,QPushButton{"
-                                    "	background-color: rgba(255, 0, 0,0);"
-                                    "}")
+                                   "	background-color: rgba(255, 0, 0,0);"
+                                   "}")
         self.pushButton_n = QPushButton(self.frame_3)
         self.pushButton_n.setFixedSize(QSize(self.locatorBoxWidgetWidth, self.locatorBoxWidgetWidth))
 
@@ -134,8 +108,34 @@ class RExpandBox(QFrame):
         self.buttonBox_mini.addWidget(self.pushButton_s, 2, 1)
         self.buttonBox_mini.addWidget(self.pushButton_se, 2, 2)
         self.buttonBox_mini.setStyleSheet("#RButtonBox{"
-                                "	background-color: rgba(250, 0, 250,0);\n"
-                                "}")
+                                          "	background-color: rgba(250, 0, 250,0);\n"
+                                          "}")
+
+
+        self.frame = QFrame(self)
+        self.frame.setObjectName(u"frameExpandBox")
+        self.frame.setGeometry(QRect(QPoint(0, 0),self.expandBoxWidgetSize))
+
+
+        self.buttonBox = RGridLayout(self, self.expandBoxWidgetSize)
+        self.buttonBox.setGeometry(0, 0, 0, 0)
+        self.buttonBox.grid_width = self.expandBoxWidgetWidth
+        self.buttonBox.grid_height = self.expandBoxWidgetWidth
+        self.buttonBox.spacing = self.expandBoxWidgetSpacing
+        self.buttonBox.addWidget(self.pushButton_NW, 0, 0)
+        self.buttonBox.addWidget(self.pushButton_N, 0, 1)
+        self.buttonBox.addWidget(self.pushButton_NE, 0, 2)
+        self.buttonBox.addWidget(self.pushButton_W, 1, 0)
+        self.buttonBox.addWidget(self.pushButton_Center, 1, 1)
+        self.buttonBox.addWidget(self.pushButton_E, 1, 2)
+        self.buttonBox.addWidget(self.pushButton_SW, 2, 0)
+        self.buttonBox.addWidget(self.pushButton_S, 2, 1)
+        self.buttonBox.addWidget(self.pushButton_SE, 2, 2)
+        self.buttonBox.setStyleSheet("#RButtonBox{"
+                        "	background-color: rgba(255, 0, 255,0);\n"
+                        "}"
+                        )
+
 
     def animationParams(self):
         '''
@@ -330,8 +330,5 @@ class RExpandBox(QFrame):
         offset_y = self.buttonBox_mini.paddingV - self.buttonBox.paddingV
 
         return QRect(self.frame_3.pos()+pos+QPoint(offset_x,offset_y),self.forwardSize_RButton)
-
-
-
 
 
