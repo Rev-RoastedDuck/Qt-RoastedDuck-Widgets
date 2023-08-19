@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icon_png/后退 (1).png</file>
+    <file>icon_png/前进 (1).png</file>
+  </qresource>
+</RCC>
