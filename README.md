@@ -10,6 +10,7 @@
     - [流光按钮](#流光按钮)
     - [流光展示卡片](#流光展示卡片)
     - [发散按钮容器](#发散按钮容器)
+    - [轮播图](#轮播图)
 - [联系方式](#联系方式)
 - [声明](#声明)
 
@@ -18,7 +19,7 @@
 # 滑动侧边栏
 ## 效果
 ![滑动侧边栏](./README/滑动侧边栏.gif)
-## 1.custom_btn.py
+## 1️⃣ custom_btn.py
 ### 功能
 - 按钮颜色动画
 - 图标与文字分离
@@ -29,7 +30,7 @@
    - 当然，如果你觉得麻烦，那就别改🤣。或者写一个方法，在初始化的时候，提取样式表的颜色，然后再配置到MyFrame._color_1。
 3. 在MyFrame.lableAnimation(),你可以修改动按钮的变化颜色。
 
-## 2.main.py
+## 2️⃣ main.py
 ### 功能
 - 功能栏向两中间伸缩
 - 收缩后，按钮会显示出圆角，而不是左圆右方
@@ -42,7 +43,7 @@
 # 波纹按钮
 ## 效果
 ![波纹按钮](./README/波纹按钮.gif)
-## 1.悬浮波纹按钮.py(命名好像有点问题😱
+## 1️⃣ 悬浮波纹按钮.py(命名好像有点问题😱
 ### 功能
 - 鼠标划入划出按钮时，出现波纹动画
 - 解决了背景颜色覆盖按钮文字的问题(用一个frame做背景就可以很好解决。实在不想用painter绘制文字😭)
@@ -52,7 +53,7 @@
 3. 同时，你可能还需要修改字体的大小，在MyPushButton.ui()里面
 4. 此外，你甚至可以尝试把PushButton换掉，把这个样式添加到别的组件上✨
 
-## 2.悬浮波纹按钮_优化.py(正优化？负优化？反正就是优化了😊
+## 2️⃣ 悬浮波纹按钮_优化.py(正优化？负优化？反正就是优化了😊
 ### 功能
 - 在原先的基础上，做了一定的封装
 ### 说明
@@ -99,7 +100,7 @@
 # 流光按钮
 ## 效果
 ![流光按钮](./README/流光按钮.gif)
-## 1.流光按钮.py(命名好像有点问题😓
+## 1️⃣ 流光按钮.py(命名好像有点问题😓
 ### 功能
 - 鼠标悬浮时，按钮边框会出现流光
 ### 说明
@@ -111,7 +112,7 @@
 7. 代码中有具体的使用方法
 8. 这个代码是优化过后的，可以直接调用，直接配置样式表和geometry就可以啦
 
-## 1.流光按钮_视频演示.py(命名好像有点问题😒
+## 1️⃣ 流光按钮_视频演示.py
 ### 说明
 1. 这个是B站上的演示代码，并没有经过优化
 
@@ -122,7 +123,7 @@
 # 流光展示卡片
 ## 效果
 ![流光展示卡片](./README/流光展示卡片.gif)
-## 1.展示边框_优化.py
+## 1️⃣ 展示边框_优化.py
 ### 功能
 - 看上面😂
 ### 说明
@@ -139,15 +140,15 @@
 # 发散按钮容器
 ## 效果
 ![发散按钮容器](./README/发散按钮容器.gif)
-## 1.main.py
+## 1️⃣ main.py
 ### 功能
 - 展示了发散按钮容器的使用方法✨
 
-## 2.RButtonBox.py
+## 2️⃣ RButtonBox.py
 ### 功能
 - 实现了RButtonBox展开和伸缩的功能✨
 ### 说明
-1. 参数说明
+1. 参数说明📃
    - RExpandBox.locatorBoxWidgetWidth: 定位按钮的宽度
    - RExpandBox.locatorBoxSize: 定位组件的尺寸
    - RExpandBox.locatorBoxWidgetSpacing: 定位按钮间的间隔
@@ -159,22 +160,52 @@
 3. 配置完RExpandBox后，需要调用RExpandBox.setConfig()使配置生效❗
 4. styleShell中按钮的圆角大小需要为按钮宽度的二分之一倍❗
 
-## 3.RGridLayout.py
+## 3️⃣ RGridLayout.py
 ### 功能
 - 实现了一个简单的网格布局器
 - RGridLayout的padding自适应
 ### 说明
-1. 参数说明
+1. 参数说明📃
    - RGridLayout.grid_width: RGridLayout内每一个小格子的宽度
    - RGridLayout.grid_height: RGridLayout内每一个小格子的高度
    - RGridLayout.spacing: RGridLayout内每个小格子的间距
 2. 实例化 RGridLayout 的时候，需要传入布局器的尺寸
 3. 通过RGridLayout.addWidget(w:QWidget,row: int,column: int)，你可以添加组件到布局器中
 
+<hr/>
+
+# 轮播图
+## 效果
+![轮播图](./README/轮播图.gif)
+## 1️⃣ SliderNav.py
+### 说明
+1. 实现了一个导航栏，用于指示当前显示的图片位置
+2. `changeColor_signal`用于触发`SliderNav.changeColor()`改变颜色
+3. `changePixmap_signal`用于触发切换图片。目前，该功能还未开发
+## 2️⃣ ClickedButton.py
+### 说明
+1. 实现了一个鼠标点击变色的按钮(写得比较随意，勿喷)
+2. 用于轮播图两侧切换图片的按钮
+
+## 3️⃣ PixmapLabel.py
+### 说明
+1. `PixmapLabel`继承自`QLabel`,用于显示图片
+2. `PixmapLabel`可以使图片适应于`PixmapLabel`的尺寸，而且可以尽可能多地保留图片信息
+3. `PixmapLabel`可以显示圆角图片，解决了图片覆盖`QLabel`圆角的问题
+
+## 4️⃣ SlideshowWidget.py
+### 说明
+1. 实现了`SlideshowWidget`轮播图的动画
+2. `SlideshowWidget.addPixmap()`:添加待显示的图片
+3. 参数说明📃
+   - SlideshowWidget.middel_widget_size: 中间图片的尺寸
+   - SlideshowWidget.lr_widget_size: 两侧图片的尺寸
+   - SlideshowWidget.animation_time: 动画过度时间
+   - SlideshowWidget.timer_interval: 图片展示时间
+4. `SlideshowWidget.animation_time`和`SlideshowWidget.timer_interval`需要到`SlideshowWidget.__animationParmas()`内自行配置❗
 
 
 <hr/>
-
 
 
 # 联系方式
