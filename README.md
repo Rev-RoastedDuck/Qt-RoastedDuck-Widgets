@@ -45,10 +45,10 @@
 ![波纹按钮](./README/波纹按钮.gif)
 ## 1️⃣ 悬浮波纹按钮.py(命名好像有点问题😱
 ### 说明
-~~1. 你可以在MyPushButton.animationConfig()配置动画参数~~
-~~2. 同时，你可能还需要修改字体的大小，在MyPushButton.ui()里面~~
-~~3. 此外，你甚至可以尝试把PushButton换掉，把这个样式添加到别的组件上✨~~
-~~4. 在初始化时，你需要传入两个参数，一个是geometry(按钮的大小和位置)，一个是minSize(按钮的最小尺寸)~~
+1. ~~你可以在MyPushButton.animationConfig()配置动画参数~~
+2. ~~同时，你可能还需要修改字体的大小，在MyPushButton.ui()里面~~
+3. ~~此外，你甚至可以尝试把PushButton换掉，把这个样式添加到别的组件上✨~~
+4. ~~在初始化时，你需要传入两个参数，一个是geometry(按钮的大小和位置)，一个是minSize(按钮的最小尺寸)~~
 
 ## 2️⃣ 悬浮波纹按钮_优化.py(正优化？负优化？反正就是优化了😊
 ### 说明
@@ -59,7 +59,7 @@
    - RWavyButton.setIcon(): 设置按钮图标
    - RWavyButton.setFont(): 配置字体大小
    - RWavyButton.setText(): 设置按钮文字内容
-~~3. 同样的，在配置完样式后，需要调用RWavyButton.setStyleSheetConfig()来使之生效~~
+3. ~~同样的，在配置完样式后，需要调用RWavyButton.setStyleSheetConfig()来使之生效~~
 ### 示例
 ```python
     # 按钮样式配置
@@ -103,9 +103,9 @@
 2. 在初始化之后，你需要设置按钮的geometry参数
 3. RPushButton.createGradient()中，你可以修改流光的颜色🎊
 4. 你可以在RPushButton.animationConfig()种修改定时时间，来控制流光的速度
-~~5. **在styleSheet(样式表)，你可以通过设置Rborder-width，来配置按钮边框的宽度(流光的宽度)**~~
-~~6. 配置完之后，需要调用RPushButton.setStyleSheetConfig()，使配置生效❗~~
-~~7. 这个代码是经过优化的，可以直接调用，直接配置样式表和geometry就可以啦~~
+5. ~~**在styleSheet(样式表)，你可以通过设置Rborder-width，来配置按钮边框的宽度(流光的宽度)**~~
+6. ~~配置完之后，需要调用RPushButton.setStyleSheetConfig()，使配置生效❗~~
+7. ~~这个代码是经过优化的，可以直接调用，直接配置样式表和geometry就可以啦~~
 
 
 <hr/>
