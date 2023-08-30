@@ -44,26 +44,21 @@
 ## 效果
 ![波纹按钮](./README/波纹按钮.gif)
 ## 1️⃣ 悬浮波纹按钮.py(命名好像有点问题😱
-### 功能
-- 鼠标划入划出按钮时，出现波纹动画
-- 解决了背景颜色覆盖按钮文字的问题(用一个frame做背景就可以很好解决。实在不想用painter绘制文字😭)
 ### 说明
 ~~1. 你可以在MyPushButton.animationConfig()配置动画参数~~
-~~2. 在初始化时，你需要传入两个参数，一个是geometry(按钮的大小和位置)，一个是minSize(按钮的最小尺寸)~~
-~~3. 同时，你可能还需要修改字体的大小，在MyPushButton.ui()里面~~
-~~4. 此外，你甚至可以尝试把PushButton换掉，把这个样式添加到别的组件上✨~~
+~~2. 同时，你可能还需要修改字体的大小，在MyPushButton.ui()里面~~
+~~3. 此外，你甚至可以尝试把PushButton换掉，把这个样式添加到别的组件上✨~~
+~~4. 在初始化时，你需要传入两个参数，一个是geometry(按钮的大小和位置)，一个是minSize(按钮的最小尺寸)~~
 
 ## 2️⃣ 悬浮波纹按钮_优化.py(正优化？负优化？反正就是优化了😊
-### 功能
-- 在原先的基础上，做了一定的封装
 ### 说明
 1.**styleSheet参数说明**📃
-   - R-full-color: 配置按钮的填充颜色
    - R-font-color: 配置按钮字体颜色
-2. 如果需要为按钮添加文字或者图标，你可以直接调用RWavyButton的方法直接配置
+   - R-full-color: 配置按钮的填充颜色
+2. 如果需要为按钮添加文字或者图标，可以直接调用以下方法进行配置
+   - RWavyButton.setIcon(): 设置按钮图标
    - RWavyButton.setFont(): 配置字体大小
    - RWavyButton.setText(): 设置按钮文字内容
-   - RWavyButton.setIcon(): 设置按钮图标
 ~~3. 同样的，在配置完样式后，需要调用RWavyButton.setStyleSheetConfig()来使之生效~~
 ### 示例
 ```python
@@ -101,8 +96,6 @@
 ## 效果
 ![流光按钮](./README/流光按钮.gif)
 ## 1️⃣ 流光按钮.py(命名好像有点问题😓
-### 功能
-- 鼠标悬浮时，按钮边框会出现流光
 ### 说明
 1. **styleSheet参数说明**📃
    - color:字体颜色
@@ -114,10 +107,6 @@
 ~~6. 配置完之后，需要调用RPushButton.setStyleSheetConfig()，使配置生效❗~~
 ~~7. 这个代码是经过优化的，可以直接调用，直接配置样式表和geometry就可以啦~~
 
-## 1️⃣ 流光按钮_视频演示.py
-### 说明
-1. 这个是B站上的演示代码，并没有经过优化
-
 
 <hr/>
 
@@ -126,8 +115,6 @@
 ## 效果
 ![流光展示卡片](./README/流光展示卡片.gif)
 ## 1️⃣ 展示边框_优化.py
-### 功能
-- 看上面😂
 ### 说明
 1. ~~老样子，你可以在styleSheet修改样式，之后需要调用DynamicBorderFrame.setStyleSheetConfig()使样式生效~~
 2. **styleSheet参数说明**📃
@@ -137,9 +124,6 @@
    - Rborder-width:卡片的边框宽度
    - background-color:外层背景颜色
    - inside-background-color:里层背景颜色
-3. 由于GIF帧率的问题，效果图片会出现残影
-
-
 
 <hr/>
 
@@ -147,12 +131,10 @@
 ## 效果
 ![发散按钮容器](./README/发散按钮容器.gif)
 ## 1️⃣ main.py
-### 功能
+### 说明
 - 展示了发散按钮容器的使用方法✨
 
 ## 2️⃣ RButtonBox.py
-### 功能
-- 实现了RButtonBox展开和伸缩的功能✨
 ### 说明
 1. 参数说明📃
    - RExpandBox.locatorBoxSize: 定位组件的尺寸
@@ -162,9 +144,11 @@
    - RExpandBox.locatorBoxWidgetSpacing: 定位按钮间的间隔
    - RExpandBox.expandBoxWidgetWidth: 伸缩组件内按钮的宽度
    - RExpandBox.expandBoxWidgetSpacing: 伸缩组件内按钮的间隔
-2. 可以通过RExpandBox.addWidget()向RExpandBox添加组件
-3. 配置完RExpandBox后，需要调用RExpandBox.setConfig()使配置生效❗
-4. styleShell中按钮的圆角大小需要为按钮宽度的二分之一倍❗
+2. 方法说明
+   - RExpandBox.addWidget()：添加组件
+   - RExpandBox.setConfig()：使配置生效
+4. 配置完RExpandBox后，需要调用RExpandBox.setConfig()使配置生效❗
+5. styleShell中按钮的圆角大小需要为按钮宽度的二分之一倍❗
 
 ## 3️⃣ RGridLayout.py
 ### 功能
