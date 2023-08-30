@@ -5,9 +5,9 @@ from PySide6.QtWidgets import QApplication, QFrame, QPushButton, QWidget, QLineE
 
 from GetStyleProperty import get_property,transfer_type
 
-class RPushButton(QFrame):
+class ShimmerButton(QFrame):
     def __init__(self, parent=None):
-        super(RPushButton, self).__init__(parent)
+        super(ShimmerButton, self).__init__(parent)
         self.componentInit()
 
     def componentInit(self):
@@ -17,26 +17,36 @@ class RPushButton(QFrame):
         '''
         self.pushButton = QPushButton(self)
 
+    def uiConfig(self):
+        self.pushButton.setGeometry(self.setBorder())
+        self.pushButton.setStyleSheet(f"""
+                                        color: {self.font_color};
+                                        border-radius:{self.border_radius};
+                                        border:none;
+                                        """
+                                     )
+
     def getStyleSheetConfig(self):
         '''
         提取样式
         :return:
         '''
-        all_property:dict = get_property(self)["*"]
-        self.border_radius = transfer_type(all_property["border-radius"],"pixel")
-        self.border = transfer_type(all_property["Rborder-width"],"pixel")
+        ShimmerButton_property:dict = get_property(self)["ShimmerButton"]
+        self.border_radius = transfer_type(ShimmerButton_property["border-radius"],"pixel")
+        self.border = transfer_type(ShimmerButton_property["Rborder-width"],"pixel")
+        self.font_color = ShimmerButton_property["color"]
 
     def animationConfig(self):
         self.timer = QTimer()
         self.timer.setInterval(10)
         self.timer.timeout.connect(self.offsetUpdate)
 
-        self.rect_1_offset = 0            # 矩形1的坐标
-        self.rect_2_offset = 0            # 矩形2的坐标
-        self.rect_1_start = 0             # 矩形1初始位置
-        self.rect_2_start = -self.width() # 矩形2初始位置
-        self.init_x = -self.width()       # 默认初始位置
-        self.flag = 0                     # 矩形1的初始位置标志，0 -> 矩形1在矩形1初始位置  1 -> 矩形1在默认初始位置
+        self.rect_1_offset = self.width()            # 矩形1的坐标
+        self.rect_2_offset = self.width()            # 矩形2的坐标
+        self.rect_1_start = -self.width()            # 矩形1初始位置
+        self.rect_2_start = -self.width() * 2        # 矩形2初始位置
+        self.init_x = -self.width()                  # 默认初始位置
+        self.flag = 0                                # 矩形1的初始位置标志，0 -> 矩形1在矩形1初始位置  1 -> 矩形1在默认初始位置
 
     def setBorder(self):
         '''
@@ -55,7 +65,7 @@ class RPushButton(QFrame):
         :param event:
         :return:
         '''
-        super(RPushButton, self).paintEvent(event)
+        super(ShimmerButton, self).paintEvent(event)
 
         path = QPainterPath()
         path.addRoundedRect(0, 0, self.width(), self.height(), self.border_radius, self.border_radius)
@@ -96,9 +106,9 @@ class RPushButton(QFrame):
         self.timer.stop()
 
     def showEvent(self, event):
-        super(RPushButton, self).showEvent(event)
+        super(ShimmerButton, self).showEvent(event)
         self.getStyleSheetConfig()
-        self.pushButton.setGeometry(self.setBorder())
+        self.uiConfig()
         self.animationConfig()
 
     def setText(self, text: str):
@@ -113,19 +123,19 @@ class RPushButton(QFrame):
         判断矩形是否离开按钮，并触发更新事件
         :return:
         '''
-        if self.rect_1_offset >= self.width() and not self.flag:
+        if self.rect_1_offset >= self.width() * 2:
             self.rect_1_offset = 0
-            self.rect_1_start = self.init_x
-            self.flag = 1
-
-        if self.rect_2_offset >= self.width() * 2:
+        if self.rect_2_offset >= self.width() * 3:
             self.rect_2_offset = 0
-            self.rect_2_start = self.init_x
+            self.rect_2_start = -self.width()
+            self.flag = 1
+        if self.rect_2_offset >= self.width() * 2 and self.flag == 1:
+            self.rect_2_offset = 0
 
         self.rect_1_offset += 3
         self.rect_2_offset += 3
-
         self.update()
+
 
 
 if __name__ == '__main__':
@@ -134,19 +144,18 @@ if __name__ == '__main__':
     w.resize(800,800)
     w.setStyleSheet("background-color:#000000")
 
-    a = RPushButton(w)
+    a = ShimmerButton(w)
     a.setGeometry(QRect(290, 280, 300, 100))
-    a.setStyleSheet(u"QFrame{"
-                       "	background-color: rgba(255, 255, 255,0);"
-                       "}"
-                       "*{"
-                       "	border:none;"
-                       "	border-radius:10px;"
-                       "    Rborder-width:5px;"
-                       ""
-                       "}"
-                       "QPushButton{color:#ffffff;}"
-                       )
+    a.setStyleSheet(u"""
+                    ShimmerButton{
+                        background-color: rgba(255, 255, 255,0);
+                        border:none;
+                        border-radius:10px;
+                        Rborder-width:5px;
+                        color:#ffffff;
+                    """
+                    )
+
     font = QFont()
     font.setPointSize(25)
     a.setFont(font)
