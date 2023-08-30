@@ -108,9 +108,8 @@
 3. 在初始化之后，你需要设置按钮的geometry参数
 4. 你可以在RPushButton.animationConfig()种修改定时时间，来控制流光的速度
 5. RPushButton.createGradient()中，你可以修改流光的颜色🎊
-6. 配置完之后，需要调用RPushButton.setStyleSheetConfig()，使配置生效❗
-7. 代码中有具体的使用方法
-8. 这个代码是经过优化的，可以直接调用，直接配置样式表和geometry就可以啦
+~~6. 配置完之后，需要调用RPushButton.setStyleSheetConfig()，使配置生效❗~~
+7. 这个代码是经过优化的，可以直接调用，直接配置样式表和geometry就可以啦
 
 ## 1️⃣ 流光按钮_视频演示.py
 ### 说明
