@@ -3,38 +3,28 @@ from PySide6.QtCore import QRect, QSize, Qt, QTimer, QParallelAnimationGroup, QP
 from PySide6.QtGui import QBrush, QColor, QCursor, QFont, QPainter, QPainterPath, QLinearGradient
 from PySide6.QtWidgets import QApplication, QFrame, QPushButton, QWidget, QLineEdit, QGraphicsBlurEffect
 
+from GetStyleProperty import get_property,transfer_type
 
 class RPushButton(QFrame):
     def __init__(self, parent=None):
         super(RPushButton, self).__init__(parent)
+        self.componentInit()
 
-    def ui(self):
-        self.pushButton = QPushButton(self)
-        self.pushButton.setGeometry(self.setBorder())
-
-        font = QFont()
-        font.setPointSize(25)
-        self.pushButton.setFont(font)
-        self.pushButton.setText("Start Coding")
-
-
-    def setStyleSheetConfig(self):
+    def componentInit(self):
         '''
-        正则提取样式
+        初始化需要的组件
         :return:
         '''
-        radius_match = QRegularExpression(r"border-radius:(?P<border_radius>\d+)px;")
-        radius_result = radius_match.match(self.styleSheet())
-        if radius_result.hasMatch():
-            self.border_radius  = int(radius_result.captured("border_radius"))
+        self.pushButton = QPushButton(self)
 
-        Rborder_width_match = QRegularExpression(r"Rborder-width:(?P<Rborder_width>\d+)px;")
-        Rborder_width_result = Rborder_width_match.match(self.styleSheet())
-        if Rborder_width_result.hasMatch():
-            self.border  = int(Rborder_width_result.captured("Rborder_width"))
-
-        self.ui()
-        self.animationConfig()
+    def getStyleSheetConfig(self):
+        '''
+        提取样式
+        :return:
+        '''
+        all_property:dict = get_property(self)["*"]
+        self.border_radius = transfer_type(all_property["border-radius"],"pixel")
+        self.border = transfer_type(all_property["Rborder-width"],"pixel")
 
     def animationConfig(self):
         self.timer = QTimer()
@@ -83,8 +73,6 @@ class RPushButton(QFrame):
         painter.setBrush(gradient_2)
         painter.drawRect(self.rect_2_start + self.rect_2_offset, 0, self.width(), self.height())
 
-
-
     def createGradient(self, x):
         '''
         设置渐变颜色
@@ -107,6 +95,19 @@ class RPushButton(QFrame):
     def leaveEvent(self, event):
         self.timer.stop()
 
+    def showEvent(self, event):
+        super(RPushButton, self).showEvent(event)
+        self.getStyleSheetConfig()
+        self.pushButton.setGeometry(self.setBorder())
+        self.animationConfig()
+
+    def setText(self, text: str):
+        self.pushButton.setText(text)
+
+    def setFont(self,font:QFont):
+        self.pushButton.setFont(font)
+
+
     def offsetUpdate(self):
         '''
         判断矩形是否离开按钮，并触发更新事件
@@ -116,10 +117,6 @@ class RPushButton(QFrame):
             self.rect_1_offset = 0
             self.rect_1_start = self.init_x
             self.flag = 1
-
-        # if self.rect_1_offset >= self.width() * 2 and self.flag:
-        #     self.rect_1_offset = 0
-        #     self.rect_1_start = self.init_x
 
         if self.rect_2_offset >= self.width() * 2:
             self.rect_2_offset = 0
@@ -145,14 +142,16 @@ if __name__ == '__main__':
                        "*{"
                        "	border:none;"
                        "	border-radius:10px;"
-                       "  Rborder-width:5px;"
+                       "    Rborder-width:5px;"
                        ""
                        "}"
                        "QPushButton{color:#ffffff;}"
                        )
+    font = QFont()
+    font.setPointSize(25)
+    a.setFont(font)
 
-    a.setStyleSheetConfig()
-
+    a.setText("Start Coding")
 
     w.show()
     app.exec()
