@@ -33,8 +33,8 @@
 ## 2️⃣ main.py
 ### 功能
 - 功能栏向两中间伸缩
-- 收缩后，按钮会显示出圆角，而不是左圆右方
 - 伸缩后，按钮的文字会消失
+- 收缩后，按钮会显示出圆角，而不是左圆右方
 ### 说明
 - 在main.config_init(),可以修改变化后的伸缩栏宽度和按钮宽度，以达到更加美观的效果😌
 
@@ -57,7 +57,7 @@
 ### 功能
 - 在原先的基础上，做了一定的封装
 ### 说明
-1. 你可以在RWavyButton.setStyleSheet的这个接口，进行参数配置
+1.**styleSheet参数说明**📃
    - R-full-color: 配置按钮的填充颜色
    - R-font-color: 配置按钮字体颜色
 2. 如果需要为按钮添加文字或者图标，你可以直接调用RWavyButton的方法直接配置
@@ -72,9 +72,9 @@
     btn.setGeometry(QRect(290, 280, 110, 35))
     btn.setStyleSheet(u"#RWavyButton{"
                        "    background-color: rgb(46, 22, 177);"
-                       "	border-radius:10px;"              # 设置圆角
-                      "    R-full-color:rgb(255, 89, 0);"     # 设置填充颜色
-                      "    R-font-color:rgb(255, 255, 255);"  # 设置字体颜色
+                       "	border-radius:10px;"               # 设置圆角
+                       "    R-full-color:rgb(255, 89, 0);"     # 设置填充颜色
+                       "    R-font-color:rgb(255, 255, 255);"  # 设置字体颜色
                       "}"
                       )
 
@@ -104,12 +104,15 @@
 ### 功能
 - 鼠标悬浮时，按钮边框会出现流光
 ### 说明
-1. **在styleSheet(样式表)，你可以通过设置Rborder-width，来配置按钮边框的宽度(流光的宽度)**
-3. 在初始化之后，你需要设置按钮的geometry参数
+1. **styleSheet参数说明**📃
+   - color:字体颜色
+   - Rborder-width:边框大小
+2. 在初始化之后，你需要设置按钮的geometry参数
+3. RPushButton.createGradient()中，你可以修改流光的颜色🎊
 4. 你可以在RPushButton.animationConfig()种修改定时时间，来控制流光的速度
-5. RPushButton.createGradient()中，你可以修改流光的颜色🎊
+~~5. **在styleSheet(样式表)，你可以通过设置Rborder-width，来配置按钮边框的宽度(流光的宽度)**~~
 ~~6. 配置完之后，需要调用RPushButton.setStyleSheetConfig()，使配置生效❗~~
-7. 这个代码是经过优化的，可以直接调用，直接配置样式表和geometry就可以啦
+~~7. 这个代码是经过优化的，可以直接调用，直接配置样式表和geometry就可以啦~~
 
 ## 1️⃣ 流光按钮_视频演示.py
 ### 说明
@@ -127,13 +130,14 @@
 - 看上面😂
 ### 说明
 1. ~~老样子，你可以在styleSheet修改样式，之后需要调用DynamicBorderFrame.setStyleSheetConfig()使样式生效~~
+2. **styleSheet参数说明**📃
    - Rcolor_1:流光的颜色1
    - Rcolor_2:流光的颜色2
    - border-radius:卡片圆角大小
    - Rborder-width:卡片的边框宽度
    - background-color:外层背景颜色
    - inside-background-color:里层背景颜色
-2. 由于GIF帧率的问题，效果图片会出现残影
+3. 由于GIF帧率的问题，效果图片会出现残影
 
 
 
@@ -151,13 +155,13 @@
 - 实现了RButtonBox展开和伸缩的功能✨
 ### 说明
 1. 参数说明📃
-   - RExpandBox.locatorBoxWidgetWidth: 定位按钮的宽度
    - RExpandBox.locatorBoxSize: 定位组件的尺寸
+   - RExpandBox.expandBoxWidgetSize: 伸缩组件的尺寸
+   - RExpandBox.locatorBoxWidgetWidth: 定位按钮的宽度
+   - RExpandBox.animationDuration: 每个按钮的动画的时间
    - RExpandBox.locatorBoxWidgetSpacing: 定位按钮间的间隔
    - RExpandBox.expandBoxWidgetWidth: 伸缩组件内按钮的宽度
-   - RExpandBox.expandBoxWidgetSize: 伸缩组件的尺寸
    - RExpandBox.expandBoxWidgetSpacing: 伸缩组件内按钮的间隔
-   - RExpandBox.animationDuration: 每个按钮的动画的时间
 2. 可以通过RExpandBox.addWidget()向RExpandBox添加组件
 3. 配置完RExpandBox后，需要调用RExpandBox.setConfig()使配置生效❗
 4. styleShell中按钮的圆角大小需要为按钮宽度的二分之一倍❗
@@ -168,9 +172,9 @@
 - RGridLayout的padding自适应
 ### 说明
 1. 参数说明📃
+   - RGridLayout.spacing: RGridLayout内每个小格子的间距
    - RGridLayout.grid_width: RGridLayout内每一个小格子的宽度
    - RGridLayout.grid_height: RGridLayout内每一个小格子的高度
-   - RGridLayout.spacing: RGridLayout内每个小格子的间距
 2. 实例化 RGridLayout 的时候，需要传入布局器的尺寸
 3. 通过RGridLayout.addWidget(w:QWidget,row: int,column: int)，你可以添加组件到布局器中
 
