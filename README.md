@@ -126,10 +126,13 @@
 ### 功能
 - 看上面😂
 ### 说明
-1. 老样子，你可以在styleSheet修改样式，之后需要调用DynamicBorderFrame.setStyleSheetConfig()使样式生效
-   - Rborder-width:卡片的边框宽度
-   - Rcolor:流光的颜色
+1. ~~老样子，你可以在styleSheet修改样式，之后需要调用DynamicBorderFrame.setStyleSheetConfig()使样式生效~~
+   - Rcolor_1:流光的颜色1
+   - Rcolor_2:流光的颜色2
    - border-radius:卡片圆角大小
+   - Rborder-width:卡片的边框宽度
+   - background-color:外层背景颜色
+   - inside-background-color:里层背景颜色
 2. 由于GIF帧率的问题，效果图片会出现残影
 
 
