@@ -48,10 +48,10 @@
 - 鼠标划入划出按钮时，出现波纹动画
 - 解决了背景颜色覆盖按钮文字的问题(用一个frame做背景就可以很好解决。实在不想用painter绘制文字😭)
 ### 说明
-1. 你可以在MyPushButton.animationConfig()配置动画参数
-2. 在初始化时，你需要传入两个参数，一个是geometry(按钮的大小和位置)，一个是minSize(按钮的最小尺寸)
-3. 同时，你可能还需要修改字体的大小，在MyPushButton.ui()里面
-4. 此外，你甚至可以尝试把PushButton换掉，把这个样式添加到别的组件上✨
+~~1. 你可以在MyPushButton.animationConfig()配置动画参数~~
+~~2. 在初始化时，你需要传入两个参数，一个是geometry(按钮的大小和位置)，一个是minSize(按钮的最小尺寸)~~
+~~3. 同时，你可能还需要修改字体的大小，在MyPushButton.ui()里面~~
+~~4. 此外，你甚至可以尝试把PushButton换掉，把这个样式添加到别的组件上✨~~
 
 ## 2️⃣ 悬浮波纹按钮_优化.py(正优化？负优化？反正就是优化了😊
 ### 功能
@@ -64,7 +64,7 @@
    - RWavyButton.setFont: 配置字体大小
    - RWavyButton.setText: 设置按钮文字内容
    - RWavyButton.setIcon: 设置按钮图标
-3. 同样的，在配置完样式后，需要调用RWavyButton.setStyleSheetConfig()来使之生效
+~~3. 同样的，在配置完样式后，需要调用RWavyButton.setStyleSheetConfig()来使之生效~~
 ### 示例
 ```python
     # 按钮样式配置
@@ -91,7 +91,7 @@
     icon.addFile(u":/\u56fe\u6807/\u56fe\u6807/\u4fdd\u5b58.png", QSize(24,24), QIcon.Normal, QIcon.Off)
     btn.setIcon(icon)
 
-    btn.setStyleSheetConfig()
+    # btn.setStyleSheetConfig()
 ```
 
 
@@ -110,7 +110,7 @@
 5. RPushButton.createGradient()中，你可以修改流光的颜色🎊
 6. 配置完之后，需要调用RPushButton.setStyleSheetConfig()，使配置生效❗
 7. 代码中有具体的使用方法
-8. 这个代码是优化过后的，可以直接调用，直接配置样式表和geometry就可以啦
+8. 这个代码是经过优化的，可以直接调用，直接配置样式表和geometry就可以啦
 
 ## 1️⃣ 流光按钮_视频演示.py
 ### 说明
