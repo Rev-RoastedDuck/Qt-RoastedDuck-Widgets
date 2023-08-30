@@ -61,9 +61,9 @@
    - R-full-color: 配置按钮的填充颜色
    - R-font-color: 配置按钮字体颜色
 2. 如果需要为按钮添加文字或者图标，你可以直接调用RWavyButton的方法直接配置
-   - RWavyButton.setFont: 配置字体大小
-   - RWavyButton.setText: 设置按钮文字内容
-   - RWavyButton.setIcon: 设置按钮图标
+   - RWavyButton.setFont(): 配置字体大小
+   - RWavyButton.setText(): 设置按钮文字内容
+   - RWavyButton.setIcon(): 设置按钮图标
 ~~3. 同样的，在配置完样式后，需要调用RWavyButton.setStyleSheetConfig()来使之生效~~
 ### 示例
 ```python
