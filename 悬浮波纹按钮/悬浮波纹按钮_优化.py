@@ -3,7 +3,7 @@ from PySide6.QtGui import QBrush, QColor, QCursor, QFont, QPainter, QPainterPath
 from PySide6.QtWidgets import QApplication, QFrame, QPushButton,QWidget
 
 import icon
-from Qss_GetProperty import get_property,transfer_type
+from GetStyleProperty import get_property,transfer_type
 
 class RWavyButton(QFrame):
     def __init__(self,parent=None):
