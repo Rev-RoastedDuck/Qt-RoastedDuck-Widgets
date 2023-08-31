@@ -5,6 +5,7 @@ csdnBlog: Rev_RoastDuck
 WeChat:Roast_71
 Email:2731491939@qq.com
 """
+import PySide6
 from PySide6.QtCore import QEasingCurve, QPoint, QAbstractAnimation
 from PySide6.QtCore import (QRect,
                             QSize, QPropertyAnimation, QTimer)
@@ -30,6 +31,8 @@ class RExpandBox(QFrame):
         self.pushButton_Center = RButton(QSize())
         self.pushButton_S = RButton(QSize())
 
+
+
     def paramsInit(self):
         self.locatorBoxSize: QSize = QSize()  # 定位Frame的尺寸
         self.locatorBoxWidgetWidth:int = 0 # 定位按钮的宽度
@@ -46,16 +49,15 @@ class RExpandBox(QFrame):
 
     def addWidget(self,w):
         self.widgetList.append(w)
+        if len(self.widgetList) == 9:
+            self.setConfig()
 
     def setConfig(self):
         (self.pushButton_E, self.pushButton_W, self.pushButton_N,
          self.pushButton_S, self.pushButton_Center, self.pushButton_NW,
          self.pushButton_SE, self.pushButton_NE, self.pushButton_SW) = self.widgetList[:9]
-
-
-
-        self.ui()
-        QTimer.singleShot(0, lambda:self.animationParams())
+        self.ui() # 不可以放在paintEvent，showEvent中调用
+        QTimer.singleShot(0, lambda: self.animationParams())
 
     def ui(self):
         self.setObjectName(u"frameContainer")
@@ -135,7 +137,6 @@ class RExpandBox(QFrame):
                         "	background-color: rgba(255, 0, 255,0);\n"
                         "}"
                         )
-
 
     def animationParams(self):
         '''
@@ -330,5 +331,3 @@ class RExpandBox(QFrame):
         offset_y = self.buttonBox_mini.paddingV - self.buttonBox.paddingV
 
         return QRect(self.frame_3.pos()+pos+QPoint(offset_x,offset_y),self.forwardSize_RButton)
-
-
