@@ -118,7 +118,7 @@ if __name__ == '__main__':
                        "")
 
     # 使配置生效
-    m.setConfig()
+    # m.setConfig()
 
     w.show()
     app.exec()
