@@ -25,10 +25,10 @@
 - 图标与文字分离
 ### 说明
 1. 你可以在初始化的时候，为按钮添加文字和图标
-2. 如果你需要修改，按钮样式，你需要到MyFrame.ui()中修改样式表。当然，你也可以在实例化之后，设置样式表。
-   - 注意:QFrame和QPushBUtton的背景颜色要一致，同时也要修改MyFrame._color_1的颜色。
-   - 当然，如果你觉得麻烦，那就别改🤣。或者写一个方法，在初始化的时候，提取样式表的颜色，然后再配置到MyFrame._color_1。
-3. 在MyFrame.lableAnimation(),你可以修改动按钮的变化颜色。
+2. 如果你需要修改，按钮样式，你需要到MyFrame.ui()中修改样式表。当然，你也可以在实例化之后，设置样式表
+   - 注意:QFrame和QPushBUtton的背景颜色要一致，同时也要修改MyFrame._color_1的颜色
+   - 当然，如果你觉得麻烦，那就别改🤣。或者写一个方法，在初始化的时候，提取样式表的颜色，然后再配置到MyFrame._color_1
+3. 在MyFrame.lableAnimation(),你可以修改动按钮的变化颜色
 
 ## 2️⃣ main.py
 ### 功能
@@ -174,25 +174,23 @@
 3. `changePixmap_signal`用于触发切换图片。目前，该功能还未开发
 ## 2️⃣ ClickedButton.py
 ### 说明
-1. 实现了一个鼠标点击变色的按钮(写得比较随意，勿喷)
-2. 用于轮播图两侧切换图片的按钮
+1. 实现了用于轮播图两侧切换图片的按钮
 
 ## 3️⃣ PixmapLabel.py
 ### 说明
 1. `PixmapLabel`继承自`QLabel`,用于显示图片
-2. `PixmapLabel`可以使图片适应于`PixmapLabel`的尺寸，而且可以尽可能多地保留图片信息
-3. `PixmapLabel`可以显示圆角图片，解决了图片覆盖`QLabel`圆角的问题
+2. `PixmapLabel`可以显示圆角图片，解决了图片覆盖`QLabel`圆角的问题
+3. `PixmapLabel`可以使图片适应于`PixmapLabel`的尺寸，而且可以尽可能多地保留图片信息
 
 ## 4️⃣ SlideshowWidget.py
 ### 说明
-1. 实现了`SlideshowWidget`轮播图的动画
-2. `SlideshowWidget.addPixmap()`:添加待显示的图片
-3. 参数说明📃
-   - SlideshowWidget.middel_widget_size: 中间图片的尺寸
-   - SlideshowWidget.lr_widget_size: 两侧图片的尺寸
-   - SlideshowWidget.animation_time: 动画过度时间
+1. 参数说明📃
    - SlideshowWidget.timer_interval: 图片展示时间
-4. `SlideshowWidget.animation_time`和`SlideshowWidget.timer_interval`需要到`SlideshowWidget.__animationParmas()`内自行配置❗
+   - SlideshowWidget.animation_time: 动画过度时间
+   - SlideshowWidget.lr_widget_size: 两侧图片的尺寸
+   - SlideshowWidget.middel_widget_size: 中间图片的尺寸
+2. `SlideshowWidget.addPixmap()`:添加待显示的图片
+3. `SlideshowWidget.animation_time`和`SlideshowWidget.timer_interval`需要到`SlideshowWidget.__animationParmas()`内自行配置❗
 
 
 <hr/>
