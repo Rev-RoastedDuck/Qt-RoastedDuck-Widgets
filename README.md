@@ -160,7 +160,7 @@
    - RGridLayout.grid_width: RGridLayout内每一个小格子的宽度
    - RGridLayout.grid_height: RGridLayout内每一个小格子的高度
 2. 实例化 RGridLayout 的时候，需要传入布局器的尺寸
-3. 通过RGridLayout.addWidget(w:QWidget,row: int,column: int)，你可以添加组件到布局器中
+3. 通过RGridLayout.addWidget(w:QWidget,row: int,col: int)，你可以添加组件到布局器中
 
 <hr/>
 
