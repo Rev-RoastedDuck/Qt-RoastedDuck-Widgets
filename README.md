@@ -147,7 +147,7 @@
 2. 方法说明
    - RExpandBox.addWidget()：添加组件
    - RExpandBox.setConfig()：使配置生效
-4. 配置完RExpandBox后，需要调用RExpandBox.setConfig()使配置生效❗
+4. ~~配置完RExpandBox后，需要调用RExpandBox.setConfig()使配置生效❗~~
 5. styleShell中按钮的圆角大小需要为按钮宽度的二分之一倍❗
 
 ## 3️⃣ RGridLayout.py
