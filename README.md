@@ -196,10 +196,10 @@
 
 <hr/>
 
-# 输入框
+# 输入框_0
 ## 效果
 ![轮播图](./README/Input.gif)
-## 1️⃣ SliderNav.py
+## 1️⃣ Input.py
 ### 说明
 1. 参数说明📃
    - editer_height: 输入框的高度
@@ -208,6 +208,17 @@
    - RInput.setFontToEditer(): 配置输入框的字体样式
    - RInput.setTextToPlaceholder(): 配置提示框的字体样式
 3. 在配置组件高度和输入框高度的时候，记得给提示框留下充足的显示空间❗
+
+
+<hr/>
+
+
+# 输入框_1
+## 效果
+![轮播图](./README/Input_1.gif)
+## 1️⃣ Input_1.py
+### 说明
+...
 
 
 
