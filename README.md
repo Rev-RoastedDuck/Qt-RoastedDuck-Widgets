@@ -199,7 +199,7 @@
 
 # 输入框_1
 ## 效果
-![轮播图](./README/Input.gif)
+![输入框_1](./README/Input.gif)
 ## 1️⃣ Input.py
 ### 说明
 1. 参数说明📃
@@ -216,7 +216,8 @@
 
 # 输入框_2
 ## 效果
-![轮播图](./README/Input_2.gif)
+![输入框_2](./README/Input_2.gif)
+![输入框_2_1](./README/Input_2_1.gif)
 ## 1️⃣ Input_2.py
 ### 说明
 ...
