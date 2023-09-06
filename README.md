@@ -44,7 +44,7 @@
 
 # 波纹按钮
 ## 效果
-![波纹按钮](./README/波纹按钮.gif)
+![波纹按钮](./Demo/WavyButton.gif)
 ## 1️⃣ 悬浮波纹按钮.py(命名好像有点问题😱
 ### 说明
 1. ~~你可以在MyPushButton.animationConfig()配置动画参数~~
@@ -96,7 +96,7 @@
 
 # 流光按钮
 ## 效果
-![流光按钮](./README/流光按钮.gif)
+![流光按钮](./Demo/SlideshowWidget.gif)
 ## 1️⃣ 流光按钮.py(命名好像有点问题😓
 ### 说明
 1. **styleSheet参数说明**📃
@@ -115,7 +115,7 @@
 
 # 流光展示卡片
 ## 效果
-![流光展示卡片](./README/DynamicBorderFrame.gif)
+![流光展示卡片](./Demo/DynamicBorderFrame.gif)
 ## 1️⃣ 展示边框_优化.py
 ### 说明
 1. ~~老样子，你可以在styleSheet修改样式，之后需要调用DynamicBorderFrame.setStyleSheetConfig()使样式生效~~
@@ -131,7 +131,7 @@
 
 # 发散按钮容器
 ## 效果
-![发散按钮容器](./README/发散按钮容器.gif)
+![发散按钮容器](./Demo/ExpandBox.gif)
 ## 1️⃣ main.py
 ### 说明
 - 展示了发散按钮容器的使用方法✨
@@ -168,7 +168,7 @@
 
 # 轮播图
 ## 效果
-![轮播图](./README/轮播图.gif)
+![轮播图](./Demo/SlideshowWidget.gif)
 ## 1️⃣ SliderNav.py
 ### 说明
 1. 实现了一个导航栏，用于指示当前显示的图片位置
@@ -199,7 +199,7 @@
 
 # 输入框_1
 ## 效果
-![输入框_1](./README/Input_1.gif)
+![输入框_1](./Demo/Input_1.gif)
 ## 1️⃣ RInput_1.py
 ### 说明
 1. 参数说明📃
@@ -216,7 +216,7 @@
 
 # 输入框_2
 ## 效果
-![输入框_2](./README/Input_2.gif)
+![输入框_2](./Demo/Input_2.gif)
 ## 1️⃣ RInput_2.py
 ### 说明
 1. 代码量不多，参数自行调整，如果再封装就显得很复杂了(bushi💦
