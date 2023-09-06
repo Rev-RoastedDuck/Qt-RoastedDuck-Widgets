@@ -200,7 +200,7 @@
 # 输入框_1
 ## 效果
 ![输入框_1](./README/Input.gif)
-## 1️⃣ Input.py
+## 1️⃣ RInput_1.py
 ### 说明
 1. 参数说明📃
    - editer_height: 输入框的高度
@@ -218,9 +218,9 @@
 ## 效果
 ![输入框_2](./README/Input_2.gif)
 ![输入框_2_1](./README/Input_2_1.gif)
-## 1️⃣ Input_2.py
+## 1️⃣ RInput_2.py
 ### 说明
-...
+1. 代码量不多，参数自行调整，如果再封装就显得很复杂了(bushi💦
 
 
 
