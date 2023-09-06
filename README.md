@@ -115,7 +115,7 @@
 
 # 流光展示卡片
 ## 效果
-![流光展示卡片](./README/流光展示卡片.gif)
+![流光展示卡片](./README/DynamicBorderFrame.gif)
 ## 1️⃣ 展示边框_优化.py
 ### 说明
 1. ~~老样子，你可以在styleSheet修改样式，之后需要调用DynamicBorderFrame.setStyleSheetConfig()使样式生效~~
@@ -199,7 +199,7 @@
 
 # 输入框_1
 ## 效果
-![输入框_1](./README/Input.gif)
+![输入框_1](./README/Input_1.gif)
 ## 1️⃣ RInput_1.py
 ### 说明
 1. 参数说明📃
