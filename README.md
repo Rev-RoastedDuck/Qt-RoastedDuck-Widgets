@@ -11,8 +11,8 @@
     - [流光展示卡片](#流光展示卡片)
     - [发散按钮容器](#发散按钮容器)
     - [轮播图](#轮播图)
-    - [输入框_1](#输入框_1)
-    - [输入框_2](#输入框_2)
+    - [ExpInput](#ExpInput)
+    - [SimpleInput](#SimpleInput)
     - [SimpleButton](#SimpleButton)
 - [联系方式](#联系方式)
 - [声明](#声明)
@@ -198,7 +198,7 @@
 
 <hr/>
 
-# 输入框_1
+# ExpInput
 ## 效果
 ![输入框_1](./Demo/Input_1.gif)
 ## 1️⃣ RInput_1.py
@@ -215,7 +215,7 @@
 <hr/>
 
 
-# 输入框_2
+# SimpleInput
 ## 效果
 ![输入框_2](./Demo/Input_2.gif)
 ## 1️⃣ RInput_2.py
