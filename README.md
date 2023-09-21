@@ -97,7 +97,7 @@
 
 # 流光按钮
 ## 效果
-![流光按钮](./Demo/SlideshowWidget.gif)
+![流光按钮](./Demo/StreamerButton.gif)
 ## 1️⃣ 流光按钮.py(命名好像有点问题😓
 ### 说明
 1. **styleSheet参数说明**📃
