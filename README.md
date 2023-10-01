@@ -229,14 +229,10 @@
 # SimpleButton
 ## 效果
 ![SimpleButton](./Demo/SimpleButton.gif)
+![SimpleButton](./Demo/SimpleButton_group_2.gif)
 ## 说明
-1. 参数说明📃
-   - full_color: 填充颜色
-   - timer_interval: 动画更新间隔
-   - font_anim_finish_color: 动画结束后的按钮字体颜色
-2. 方法说明📃
+1. 方法📃
    - SimpleButton_X.setParams(): 配置必要的参数
-
 <hr/>
 
 
