@@ -21,7 +21,7 @@
 
 # 滑动侧边栏
 ## 效果
-![滑动侧边栏](./README/滑动侧边栏.gif)
+![滑动侧边栏](./README/ScalableMenuBar.gif)
 ## 1️⃣ custom_btn.py
 ### 功能
 - 按钮颜色动画
