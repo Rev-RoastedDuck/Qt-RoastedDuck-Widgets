@@ -14,6 +14,7 @@
     - [ExpInput](#ExpInput)
     - [SimpleInput](#SimpleInput)
     - [SimpleButton](#SimpleButton)
+    - [SwitchButton](#SwitchButton)
 - [联系方式](#联系方式)
 - [声明](#声明)
 
@@ -233,6 +234,18 @@
 ## 说明
 1. 方法📃
    - SimpleButton_X.setParams(): 配置必要的参数
+<hr/>
+
+# SwitchButton
+## 效果
+![SwitchButton](./Demo/SwitchButton.gif)
+## 说明
+1. 方法📃
+   - setParams(): 配置必要的参数
+       - indicator_color:指示器的颜色
+       - background_color:组件背景颜色
+       - checked_indicator_color:点击后的指示器颜色
+       - checked_background_color:点击后的背景颜色
 <hr/>
 
 
