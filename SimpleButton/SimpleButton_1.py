@@ -113,7 +113,7 @@ class SimpleButton_1(QPushButton):
         self.timer.start()
 
     def leaveEvent(self, event):
-        self.font_color = self.font_anim_finish_color
+        self.font_color = self.font_anim_start_color
         self.timer.timeout.disconnect()
         self.timer.timeout.connect(self.decRadius)
         self.timer.start()
