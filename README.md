@@ -15,7 +15,7 @@
     - [SimpleInput](#SimpleInput)
     - [SimpleButton](#SimpleButton)
     - [SwitchButton](#SwitchButton)
-    - [Slidern](#Slider)
+    - [Slider](#Slider)
 - [联系方式](#联系方式)
 - [声明](#声明)
 
