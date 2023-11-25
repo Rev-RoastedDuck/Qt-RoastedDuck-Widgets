@@ -248,6 +248,20 @@
        - checked_background_color:点击后的背景颜色
 <hr/>
 
+# Slider
+## 效果
+![Slider](./Demo/Silder.gif)
+## 说明📃
+1. 该控件使用了不同的接口实现，分别是QPainter.drawLine()和Qpainter.drawRect()
+2. 该控件的参数设置接口还未实现，但是你可以在Slider.__paramsConfig()内部修改组件参数
+3. 参数列表
+   - color_groove_sub:被handle滑动槽的颜色
+   - color_groove_add:未被handle滑动槽的颜色
+   - color_handle_inside:handle(圆形内部的颜色)
+   - color_handle_outside:handle(圆形外部的颜色)
+   - width_line:滑动槽的宽度
+   - radius_handle:handle的半径大小
+
 
 
 # 联系方式
