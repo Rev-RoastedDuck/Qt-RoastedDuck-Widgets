@@ -270,5 +270,5 @@
 - WeChat:Roast_71
 - csdnBlog:Rev_RoastDuck
 
-# 声明
-__本内容仅供学习与交流，禁止用于任何形式的商业用途__
+# 许可证
+QT-material-widgets 使用GPLv3许可证.
