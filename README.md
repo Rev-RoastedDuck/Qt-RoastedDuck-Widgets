@@ -55,7 +55,7 @@
 3. ~~此外，你甚至可以尝试把PushButton换掉，把这个样式添加到别的组件上✨~~
 4. ~~在初始化时，你需要传入两个参数，一个是geometry(按钮的大小和位置)，一个是minSize(按钮的最小尺寸)~~
 
-## 2️⃣ 悬浮波纹按钮_优化.py(正优化？负优化？反正就是优化了😊
+##2️⃣ 悬浮波纹按钮_优化.py(正优化？负优化？反正就是优化了😊
 ### 说明
 1. **styleSheet参数说明**📃
    - R-font-color: 配置按钮字体颜色
@@ -100,14 +100,14 @@
 # 流光按钮
 ## 效果
 ![流光按钮](./Demo/StreamerButton.gif)
-## 1️⃣ 流光按钮.py(命名好像有点问题😓
+## 1️⃣ RWavyButton.py
 ### 说明
-1. **styleSheet参数说明**📃
-   - color:字体颜色
-   - Rborder-width:边框大小
-2. 在初始化之后，你需要设置按钮的geometry参数
+1. ~~**styleSheet参数说明**📃~~
+   ~~- color:字体颜色~~
+  ~~- Rborder-width:边框大小~~
+2. ~~在初始化之后，你需要设置按钮的geometry参数~~
 3. RPushButton.createGradient()中，你可以修改流光的颜色🎊
-4. 你可以在RPushButton.animationConfig()种修改定时时间，来控制流光的速度
+4. ~~你可以在RPushButton.animationConfig()种修改定时时间，来控制流光的速度~~
 5. ~~**在styleSheet(样式表)，你可以通过设置Rborder-width，来配置按钮边框的宽度(流光的宽度)**~~
 6. ~~配置完之后，需要调用RPushButton.setStyleSheetConfig()，使配置生效❗~~
 7. ~~这个代码是经过优化的，可以直接调用，直接配置样式表和geometry就可以啦~~
@@ -222,7 +222,7 @@
 ![SimpleInput](./Demo/Input_2.gif)
 ## 1️⃣ SimpleInput.py
 ### 说明
-1. 代码量不多，参数自行调整，如果再封装就显得很复杂了(bushi💦
+1. ~~代码量不多，参数自行调整，如果再封装就显得很复杂了(bushi💦~~
 
 
 
