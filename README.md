@@ -4,28 +4,28 @@
 🎨 Qt widgets-based implementation of the Material Design specification.😊
 
 ## 内容列表
-- [组件列表](#组件列表)
-  - 按钮|Button
+- **组件列表**
+  - ** 按钮|Button**
     - [波纹按钮|RWavyButton](#波纹按钮)
     - [流光按钮|GlowButton](#流光按钮)
     - [简易按钮|SimpleButton](#SimpleButton)
     - [切换开关|SwitchButton](#SwitchButton)
    
-  - 输入框|LineEdit
+  - **输入框|LineEdit**
     - [伸缩输入框|ExpInput](#ExpInput)
     - [简易输入框|SimpleInput](#SimpleInput)
    
-  - 容器|Container
+  - **容器|Container**
     - [发散按钮容器|RExpandBox](#发散按钮容器)
     - [轮播图组件|SlideShowImageWidget](#轮播图)
     -  [滑动侧边栏|DynamicBorderWidget](#滑动侧边栏)
     - [流光展示卡片|DynamicBorderWidget](#流光展示卡片)
    
-  - 滑块|Slider
+  - **滑块|Slider**
     - [滑块组件|Slider](#Slider)
       
-- [联系方式](#联系方式)
-- [声明](#声明)
+- [**联系方式**](#联系方式)
+- [**声明**](#声明)
 
 <hr/>
 
