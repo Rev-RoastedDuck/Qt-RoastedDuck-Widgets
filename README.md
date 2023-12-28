@@ -5,7 +5,7 @@
 
 ## 内容列表
 - **组件列表**
-  - ** 按钮|Button**
+  - **按钮|Button**
     - [波纹按钮|RWavyButton](#波纹按钮)
     - [流光按钮|GlowButton](#流光按钮)
     - [简易按钮|SimpleButton](#SimpleButton)
