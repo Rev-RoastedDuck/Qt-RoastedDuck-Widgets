@@ -10,7 +10,6 @@
     - [流光按钮|GlowButton](#流光按钮)
     - [简易按钮|SimpleButton](#SimpleButton)
     - [切换开关|SwitchButton](#SwitchButton)
-    - [滑动侧边栏|DynamicBorderWidget](#滑动侧边栏)
    
   - 输入框|LineEdit
     - [伸缩输入框|ExpInput](#ExpInput)
@@ -19,6 +18,7 @@
   - 容器|Container
     - [发散按钮容器|RExpandBox](#发散按钮容器)
     - [轮播图组件|SlideShowImageWidget](#轮播图)
+    -  [滑动侧边栏|DynamicBorderWidget](#滑动侧边栏)
     - [流光展示卡片|DynamicBorderWidget](#流光展示卡片)
    
   - 滑块|Slider
