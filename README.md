@@ -1,8 +1,4 @@
-# QT-组件 QT-material-widgets
-🎨 基于Qt小部件的实现😊
-
-🎨 Qt widgets-based implementation of the Material Design specification.😊
-
+# QT-组件 Qt-RoastedDuck-Widgets
 ## 内容列表
 - **组件列表**
   - **按钮|Button**
