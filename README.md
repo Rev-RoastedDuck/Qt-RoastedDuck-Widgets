@@ -208,9 +208,9 @@
 
 
 # 联系方式
-- Email:2731491939@qq.com
 - WeChat:Roast_71
 - csdnBlog:Rev_RoastDuck
+- BliBli:https://space.bilibili.com/439475163
 
 # 许可证
 QT-material-widgets 使用GPLv3许可证.
