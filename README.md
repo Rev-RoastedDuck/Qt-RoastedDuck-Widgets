@@ -147,7 +147,7 @@
 
 ## 伸缩侧边栏-FlexibleSidebar
 ### 效果:
-![滑动侧边栏](./Demo/ScalableMenuBar.gif)
+![滑动侧边栏](./Demo/FlexibleSideBar.gif)
 ## 说明:
 1. 参数📃
    - min_of_range：控件的最小宽度
