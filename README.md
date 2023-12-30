@@ -12,7 +12,7 @@
 ## 内容目录|Table of Contents
 - **组件目录|Components**
   - **按钮|Button**
-    - [波纹按钮|RWavyButton](#波纹按钮|RWavyButton)
+    - [波纹按钮|RWavyButton](##波纹按钮|RWavyButton)
     - [流光按钮|GlowButton](#流光按钮|GlowButton)
     - [简易按钮|SimpleButton](#简易按钮|SimpleButton)
     - [切换开关|SwitchButton](#切换开关|SwitchButton)
