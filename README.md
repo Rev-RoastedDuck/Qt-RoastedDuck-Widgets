@@ -9,34 +9,34 @@
 </div>
 
 
-## 内容目录|Table of Contents
-- **组件目录|Components**
-  - **按钮|Button**
-    - [波纹按钮|RWavyButton](#波纹按钮-RWavyButton)
-    - [流光按钮|GlowButton](#流光按钮|GlowButton)
-    - [简易按钮|SimpleButton](#简易按钮|SimpleButton)
-    - [切换开关|SwitchButton](#切换开关|SwitchButton)
+## 内容目录-Table of Contents
+- **组件目录-Components**
+  - **按钮-Button**
+    - [波纹按钮-RWavyButton](#波纹按钮-RWavyButton)
+    - [流光按钮-GlowButton](#流光按钮-GlowButton)
+    - [简易按钮-SimpleButton](#简易按钮-SimpleButton)
+    - [开关按钮-SwitchButton](#切换按钮-SwitchButton)
    
-  - **输入框|LineEdit**
-    - [伸缩输入框|ExpandLineEdit](#伸缩输入框|ExpandLineEdit)
-    - [简易输入框|SimpleLineEdit](#简易输入框|SimpleLineEdit)
+  - **输入框-LineEdit**
+    - [伸缩输入框-ExpandLineEdit](#伸缩输入框-ExpandLineEdit)
+    - [简易输入框-SimpleLineEdit](#简易输入框-SimpleLineEdit)
    
-  - **容器|Container**
-    - [发散按钮容器|RExpandButtonBox](#发散按钮容器|RExpandButtonBox)
-    - [轮播图组件|SlideShowWidget](#轮播图组件|SlideShowWidget)
-    - [伸缩侧边栏|FlexibleSidebar](#伸缩侧边栏|FlexibleSidebar)
-    - [流光展示卡片|DynamicBorderWidget](#流光展示卡片|DynamicBorderWidget)
+  - **容器-Container**
+    - [发散按钮容器-RExpandButtonBox](#发散按钮容器-RExpandButtonBox)
+    - [轮播图组件-SlideShowWidget](#轮播图组件-SlideShowWidget)
+    - [伸缩侧边栏-FlexibleSidebar](#伸缩侧边栏-FlexibleSidebar)
+    - [流光展示卡片-DynamicBorderWidget](#流光展示卡片-DynamicBorderWidget)
    
-  - **滑块组件|Slider**
-    - [滑块|Slider](#滑块|Slider)
+  - **滑块组件-Slider**
+    - [滑块-Slider](#滑块-Slider)
   
-- [**声明|License**](#声明|License)
-- [**联系方式|Contact**](#联系方式|Contact)
+- [**声明-License**](#声明-License)
+- [**联系方式-Contact**](#联系方式-Contact)
 
 
 <hr/>
 
-# 按钮|Button
+# 按钮-Button
 
 ## 波纹按钮-RWavyButton
 ### 效果:
@@ -49,7 +49,7 @@
 2. 方法📃
    - setParams()：配置控件的样式参数
 
-## 流光按钮|GlowButton
+## 流光按钮-GlowButton
 ### 效果:
 ![流光按钮](./Demo/StreamerButton.gif)
 ### 说明:
@@ -61,7 +61,7 @@
 2. 方法📃
    - setParams()：配置控件的样式参数
 
-## 简易按钮|SimpleButton
+## 简易按钮-SimpleButton
 ### 效果:
 ![SimpleButton](./Demo/SimpleButton.gif)
 ![SimpleButton](./Demo/SimpleButton_group_2.gif)
@@ -83,7 +83,7 @@
 3. 方法📃
    - setParams();配置控件的样式参数
   
-## 切换开关|SwitchButton
+## 开关按钮-SwitchButton
 ### 效果:
 ![SwitchButton](./Demo/SwitchButton.gif)
 ### 说明:
@@ -95,9 +95,9 @@
 2. 方法📃
    - setParams(): 配置必要的参数
   
-# 输入框|LineEdit
+# 输入框-LineEdit
 
-## 伸缩输入框|ExpandLineEdit
+## 伸缩输入框-ExpandLineEdit
 ### 效果:
 ![ExpandLineEdit](./Demo/Input_1.gif)
 ### 说明:
@@ -110,7 +110,7 @@
 3. 在配置组件高度和输入框高度的时候，记得给提示框留下充足的显示空间❗
 
 
-## 简易输入框|SimpleLineEdit
+## 简易输入框-SimpleLineEdit
 ### 效果:
 ![SimpleLineEdit](./Demo/Input_2.gif)
 ### 说明:
@@ -123,9 +123,9 @@
    - setParams()：配置控件的样式参数
 
 
-# 容器|Container
+# 容器-Container
 
-## 发散按钮容器|RExpandButtonBox
+## 发散按钮容器-RExpandButtonBox
 ### 效果:
 ![发散按钮容器](./Demo/ExpandBox.gif)
 ### 说明:
@@ -143,7 +143,7 @@
 3. styleShell中按钮的圆角大小需要为按钮宽度的二分之一倍❗
 
 
-## 伸缩侧边栏|FlexibleSidebar
+## 伸缩侧边栏-FlexibleSidebar
 ### 效果:
 ![滑动侧边栏](./Demo/ScalableMenuBar.gif)
 ## 说明:
@@ -155,7 +155,7 @@
 2. 方法📃
    - setParams()：配置控件的样式参数
    
-## 流光展示卡片|DynamicBorderWidget
+## 流光展示卡片-DynamicBorderWidget
 ### 效果:
 ![流光展示卡片](./Demo/DynamicBorderFrame.gif)
 ### 说明:
@@ -169,7 +169,7 @@
    - setParams()：配置控件的样式参数
 
 
-## 轮播图组件|SlideShowWidget
+## 轮播图组件-SlideShowWidget
 ### 效果:
 ![轮播图](./Demo/SlideshowWidget.gif)
 ### 说明:
@@ -182,8 +182,8 @@
    - `SlideshowWidget.addPixmap()`:添加待显示的图片
 4. `SlideshowWidget.animation_time`和`SlideshowWidget.timer_interval`需要到`SlideshowWidget.__animationParmas()`内自行配置❗
 
-# 滑块组件|Slider
-## 滑块|Slider
+# 滑块组件-Slider
+## 滑块-Slider
 ### 效果:
 ![Slider](./Demo/Silder.gif)
 ### 说明:
@@ -198,10 +198,10 @@
 3. 该控件的参数设置接口还未实现，但是你可以在Slider.__paramsConfig()内部修改组件参数
 
 
-# 声明|License
+# 声明-License
 Qt-RoastedDuck-Widgets 使用GPLv3许可证.
 
-# 联系方式|Contact
+# 联系方式-Contact
 - WeChat:Roast_71
 - csdnBlog:Rev_RoastDuck
 - BliBli:https://space.bilibili.com/439475163
