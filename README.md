@@ -1,11 +1,13 @@
 
 <div align="center">
   <h1>Qt-RoastedDuck-Widgets</h1>
+
 </div>
 <div align="center">
-  <img src="https://img.shields.io/badge/license-GPLv3-green?logoColor=63%2C%20185%2C%2017&label=license&labelColor=63%2C%20185%2C%2017&color=63%2C%20185%2C%2017">
-  <img src="https://img.shields.io/badge/language-Python3-green?logoColor=63%2C%20185%2C%2017&labelColor=63%2C%20185%2C%2017&color=63%2C%20185%2C%2017">
-  <img src="https://img.shields.io/badge/health-90%25-green?logoColor=63%2C%20185%2C%2017&labelColor=63%2C%20185%2C%2017&color=63%2C%20185%2C%2017">
+  <img src="https://img.shields.io/badge/License-GPLv3-green?logoColor=63%2C%20185%2C%2017&label=license&labelColor=63%2C%20185%2C%2017&color=63%2C%20185%2C%2017">
+  <img src="https://img.shields.io/badge/Language-Python3-green?logoColor=63%2C%20185%2C%2017&labelColor=63%2C%20185%2C%2017&color=63%2C%20185%2C%2017">
+  <img src="https://img.shields.io/badge/Qt-PyQt%20PySide-green?logoColor=63%2C%20185%2C%2017&labelColor=63%2C%20185%2C%2017&color=63%2C%20185%2C%2017">
+  <img src="https://img.shields.io/badge/Health-95%25-green?logoColor=63%2C%20185%2C%2017&labelColor=63%2C%20185%2C%2017&color=63%2C%20185%2C%2017">
 </div>
 
 
@@ -31,7 +33,7 @@
     - [滑块-Slider](#滑块-Slider)
   
 - [**声明-License**](#声明-License)
-- [**联系方式-Contact**](#联系方式-Contact)
+- [**联系-Contact**](#联系方式-Contact)
 
 
 <hr/>
