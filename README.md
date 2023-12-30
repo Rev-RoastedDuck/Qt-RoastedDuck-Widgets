@@ -42,7 +42,7 @@
 
 ## 波纹按钮-RWavyButton
 ### 效果:
-![波纹按钮](./Demo/WavyButton.gif)
+![波纹按钮](./Demo/RWavyButton.gif)
 ### 说明:
 1. 参数📃
    - font-color: 按钮的字体颜色
