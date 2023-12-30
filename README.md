@@ -101,7 +101,7 @@
 
 ## 伸缩输入框-ExpandLineEdit
 ### 效果:
-![ExpandLineEdit](./Demo/Input_1.gif)
+![ExpandLineEdit](./Demo/ExpandLineEdit.gif)
 ### 说明:
 1. 参数📃
    - editer_height: 输入框的高度
