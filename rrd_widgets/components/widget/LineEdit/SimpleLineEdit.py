@@ -17,7 +17,7 @@ class SimpleLineEditBase(LineEditAnimationBase):
 
     @abstractmethod
     def setParams(self, font_color: QColor, *args):
-        self.setStyleSheet(f"LineEditBase{{color:'{font_color.name()}';border:none;padding-left:10px;}}")
+        self.setStyleSheet(f"SimpleLineEditBase{{color:'{font_color.name()}';border:none;padding-left:10px;}}")
         pass
 
     def paintEvent(self, event):
