@@ -66,14 +66,14 @@ class SimpleLineEdit_1(SimpleLineEditBase):
 
         pen = QPen(QColor(self.anim_start_color), line_height, Qt.SolidLine)
         painter.setPen(pen)
-        painter.drawLine(QPointF(0, self.height() - line_height),
-                         QPointF(self.width(), self.height() - line_height))
+        painter.drawLine(QPointF(0, self.height() - line_height+1),
+                         QPointF(self.width(), self.height() - line_height+1))
 
         if self.is_foucus:
             pen = QPen(QColor(self.anim_finish_color), line_height, Qt.SolidLine)
             painter.setPen(pen)
-            painter.drawLine(QPointF(0, self.height() - line_height),
-                             QPointF(self.line_width_anim, self.height() - line_height))
+            painter.drawLine(QPointF(0, self.height() - line_height+1),
+                             QPointF(self.line_width_anim, self.height() - line_height+1))
 
         painter.restore()
 
