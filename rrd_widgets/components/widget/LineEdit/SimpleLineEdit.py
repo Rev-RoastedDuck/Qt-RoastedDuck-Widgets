@@ -1,8 +1,8 @@
 from typing import Tuple
 from abc import abstractmethod
 
-from PySide6.QtCore import Qt, QPointF
-from PySide6.QtGui import QColor, QPainter, QPen, QPainterPath
+from PySide6.QtCore import Qt, QPointF, QEvent
+from PySide6.QtGui import QColor, QPainter, QPen, QPainterPath, QResizeEvent
 
 from ...base import LineEditAnimationBase
 
@@ -17,13 +17,13 @@ class SimpleLineEditBase(LineEditAnimationBase):
 
     @abstractmethod
     def setParams(self, font_color: QColor, *args):
-        self.setStyleSheet(f"SimpleLineEditBase{{color:'{font_color.name()}';border:none;padding-left:10px;}}")
+        self.setStyleSheet(f"SimpleLineEditBase{{color:{font_color.name()};border:none;padding-left:10px;}}")
         pass
 
-    def paintEvent(self, event):
+    def paintEvent(self, event:QEvent):
         super().paintEvent(event)
         path = QPainterPath()
-        path.addRoundedRect(0, 0, self.width(), self.height(), self.border_radius, self.border_radius)
+        path.addRoundedRect(self.rect(), self.border_radius, self.border_radius)
 
         painter = QPainter(self)
         painter.setPen(Qt.NoPen)
@@ -74,7 +74,6 @@ class SimpleLineEdit_1(SimpleLineEditBase):
             painter.setPen(pen)
             painter.drawLine(QPointF(0, self.height() - line_height+1),
                              QPointF(self.line_width_anim, self.height() - line_height+1))
-
         painter.restore()
 
     def onAnimParamChangeSignal(self, v) -> None:
@@ -89,6 +88,10 @@ class SimpleLineEdit_1(SimpleLineEditBase):
         super().focusOutEvent(event)
         self.is_foucus = False
         self.animBackwardRun()
+
+    def resizeEvent(self, event:QResizeEvent) -> None:
+        super().resizeEvent(event)
+        self.line_width_anim = event.size().width()
 
 
 class SimpleLineEdit_2(SimpleLineEditBase):
@@ -125,3 +128,7 @@ class SimpleLineEdit_2(SimpleLineEditBase):
 
     def get_anim_range(self) -> Tuple:
         return 0, 0
+    
+    def resizeEvent(self, event:QResizeEvent) -> None:
+        super().resizeEvent(event)
+        self.line_width_anim = event.size().width()
