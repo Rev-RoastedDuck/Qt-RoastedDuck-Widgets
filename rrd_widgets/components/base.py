@@ -43,11 +43,13 @@ def animation_widget_decorator(cls:QWidget):
 
         def animForwardRun(self) -> None:
             self.anim.stop()
+            self.min_anim_param, self.max_anim_param = self.get_anim_range()
             self.anim.setEndValue(self.max_anim_param)
             self.anim.start()
 
         def animBackwardRun(self) -> None:
             self.anim.stop()
+            self.min_anim_param, self.max_anim_param = self.get_anim_range()
             self.anim.setEndValue(self.min_anim_param)
             self.anim.start()
 
