@@ -31,6 +31,9 @@
    
   - **滑块组件-Slider**
     - [滑块-Slider](#滑块-Slider)
+   
+  - **通知组件-Notification Components**
+    - [提示组件-TipsWidget](#提示组件-TipsWidget)
   
 - [**声明-License**](#声明-License)
 - [**联系-Contact**](#联系方式-Contact)
@@ -199,6 +202,10 @@
 2. 该控件使用了不同的接口实现，分别是QPainter.drawLine()和Qpainter.drawRect()
 3. 该控件的参数设置接口还未实现，但是你可以在Slider.__paramsConfig()内部修改组件参数
 
+# 通知组件-Notification Components
+## 提示组件-TipsWidget
+### 效果:
+![TipsWidget](./Demo/TipsWidget.gif)
 
 # 声明-License
 Qt-RoastedDuck-Widgets 使用GPLv3许可证.
