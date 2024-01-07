@@ -28,6 +28,7 @@
     - [轮播图组件-SlideShowWidget](#轮播图组件-SlideShowWidget)
     - [伸缩侧边栏-FlexibleSidebar](#伸缩侧边栏-FlexibleSidebar)
     - [流光展示卡片-DynamicBorderWidget](#流光展示卡片-DynamicBorderWidget)
+    - [卡片列表-CardListView](#卡片列表-CardListView)
    
   - **滑块组件-Slider**
     - [滑块-Slider](#滑块-Slider)
@@ -187,6 +188,12 @@
    - `SlideshowWidget.addPixmap()`:添加待显示的图片
 4. `SlideshowWidget.animation_time`和`SlideshowWidget.timer_interval`需要到`SlideshowWidget.__animationParmas()`内自行配置❗
 
+## 卡片列表-CardListView
+### 效果:
+![CardListView](./Demo/CardListView.gif)
+### 说明:
+
+
 # 滑块组件-Slider
 ## 滑块-Slider
 ### 效果:
@@ -206,6 +213,7 @@
 ## 提示组件-TipsWidget
 ### 效果:
 ![TipsWidget](./Demo/TipsWidget.gif)
+### 说明:
 
 # 声明-License
 Qt-RoastedDuck-Widgets 使用GPLv3许可证.
