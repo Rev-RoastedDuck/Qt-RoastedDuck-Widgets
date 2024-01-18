@@ -34,7 +34,7 @@
     - [滑块-Slider](#滑块-Slider)
    
   - **通知组件-Notification Components**
-    - [提示组件-TipsWidget](#提示组件-TipsWidget)
+    - [提示弹窗-TipsWidget](#提示弹窗-TipsWidget)
   
 - [**声明-License**](#声明-License)
 - [**联系-Contact**](#联系方式-Contact)
@@ -210,7 +210,7 @@
 3. 该控件的参数设置接口还未实现，但是你可以在Slider.__paramsConfig()内部修改组件参数
 
 # 通知组件-Notification Components
-## 提示组件-TipsWidget
+## 提示弹窗-TipsWidget
 ### 效果:
 ![TipsWidget](./Demo/TipsWidget.gif)
 ### 说明:
