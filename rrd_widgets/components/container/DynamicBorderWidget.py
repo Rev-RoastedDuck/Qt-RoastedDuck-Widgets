@@ -12,6 +12,7 @@ class DynamicBorderWidget(WidgetAnimationBase):
         super().__init__(parent)
         self.is_infinite = True
         self.anim_msecs = 8000
+        self.anim.setLoopCount(-1)
         self.componentInit()
 
     def componentInit(self):
