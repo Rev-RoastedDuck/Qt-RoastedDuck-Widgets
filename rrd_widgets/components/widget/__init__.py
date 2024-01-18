@@ -20,6 +20,6 @@ Information:
 from .Button import *
 from .LineEdit import *
 from .Slider import *
-from .TipsWidget import *
+from .NotificationWidget import *
 
 
