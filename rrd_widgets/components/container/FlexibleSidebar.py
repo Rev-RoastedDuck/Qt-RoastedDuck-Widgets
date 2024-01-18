@@ -2,7 +2,7 @@ from PySide6.QtCore import Qt
 from PySide6.QtGui import QColor, QPainter, QPainterPath
 from PySide6.QtWidgets import QPushButton, QVBoxLayout,QWidget
 
-from ...common import icon_flexible_sidebar
+from ...common.icon.binary_data_icon import icon_flexible_sidebar
 from ..base import WidgetAnimationGroupBase
 
 
