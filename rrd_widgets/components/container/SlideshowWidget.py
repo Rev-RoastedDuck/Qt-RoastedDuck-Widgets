@@ -2,7 +2,8 @@ from PySide6.QtCore import QTimer, QPropertyAnimation, QEasingCurve, QParallelAn
     QPoint, QRegularExpression, Qt, Signal
 from PySide6.QtGui import QPixmap, QIcon, QPainterPath, QPainter, QResizeEvent
 from PySide6.QtWidgets import  QPushButton, QLabel, QWidget, QSizePolicy, QButtonGroup, QHBoxLayout
-from ...common import icon_slider_show as icon
+from ...common.icon.binary_data_icon import icon_slider_show as icon
+
 
 class PixmapLabel(QLabel):
     def __init__(self, *args, **kwargs):
