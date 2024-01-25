@@ -108,6 +108,7 @@
 ## 微光按钮-ShimmerButton
 ### 效果:
 ![ShimmerButton](./Demo/ShimmerButton.gif)
+### 说明:
 1. 参数📃
    - font_color:字体颜色
    - shimmer_color_1:背景颜色1
