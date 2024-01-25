@@ -18,6 +18,7 @@
     - [流光按钮-GlowButton](#流光按钮-GlowButton)
     - [简易按钮-SimpleButton](#简易按钮-SimpleButton)
     - [开关按钮-SwitchButton](#切换按钮-SwitchButton)
+    - [微光按钮-ShimmerButton](#微光按钮-ShimmerButton)
    
   - **输入框-LineEdit**
     - [伸缩输入框-ExpandLineEdit](#伸缩输入框-ExpandLineEdit)
@@ -103,6 +104,18 @@
    - checked_background_color:点击后的背景颜色
 2. 方法📃
    - setParams(): 配置必要的参数
+
+## 微光按钮-ShimmerButton
+### 效果:
+![ShimmerButton](./Demo/ShimmerButton.gif)
+1. 参数📃
+   - font_color:字体颜色
+   - shimmer_color_1:背景颜色1
+   - shimmer_color_2:背景颜色2
+   - border_radius:按钮圆角大小
+   - shimmer_blur_radius:模糊程度
+   - timer_interval:动画时间间隔
+   
   
 # 输入框-LineEdit
 
@@ -195,6 +208,7 @@
 ### 效果:
 ![CardListView](./Demo/CardListView.gif)
 ### 说明:
+1. 添加委托到ListView即可。
 
 
 # 滑块组件-Slider
@@ -217,13 +231,31 @@
 ### 效果:
 ![TipsWidget](./Demo/TipsWidget.gif)
 ### 说明:
+1. 示例📃
+   ```python
+        tip = TipsWidget(self)                              # 实例化组件
+        tip.setText("Success|Description of the success")   # 添加提示语
+        tip.status = TipsStatus.Succeed                     # 设置提示状态
+        tip.move(120, 20)                                   # 设置显示位置
+        tip.show()                                          # 显示
+   ```
+2. 动画结束后，组件会自动销毁❗
 
 # 仪表组件-Instrumentation Components
 ## 速度仪表-Speedometer
 ### 效果:
 ![Speedometer](./Demo/Speedometer.png)
 ### 说明：
-
+1. 参数📃
+   - radius:表盘大小
+   - width_arc:圆环宽度
+   - color_triangle:指针的颜色
+   - color_arc_sub:圆环内已覆盖区域的颜色
+   - color_arc_add:圆环内未覆盖区域的颜色
+   - color_text:文字的颜色 
+2. 方法📃
+   - updateValue():更新当前值
+   - setRange():设置数值范围
 
 
 # 声明-License
