@@ -35,6 +35,9 @@
    
   - **通知组件-Notification Components**
     - [提示弹窗-TipsWidget](#提示弹窗-TipsWidget)
+ 
+  - **仪表组件-Instrumentation Components**
+    - [速度仪表-Speedometer](#速度仪表-Speedometer)
   
 - [**声明-License**](#声明-License)
 - [**联系-Contact**](#联系方式-Contact)
@@ -214,6 +217,14 @@
 ### 效果:
 ![TipsWidget](./Demo/TipsWidget.gif)
 ### 说明:
+
+# 仪表组件-Instrumentation Components
+## 速度仪表-Speedometer
+### 效果:
+![Speedometer](./Demo/Speedometer.png)
+### 说明：
+
+
 
 # 声明-License
 Qt-RoastedDuck-Widgets 使用GPLv3许可证.
