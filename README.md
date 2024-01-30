@@ -225,7 +225,8 @@
    - width_line:滑动槽的宽度
    - radius_handle:handle的半径大小
 2. 该控件使用了不同的接口实现，分别是QPainter.drawLine()和Qpainter.drawRect()
-3. 该控件的参数设置接口还未实现，但是你可以在Slider.__paramsConfig()内部修改组件参数
+3. ~~该控件的参数设置接口还未实现，但是你可以在Slider.__paramsConfig()内部修改组件参数~~
+4. 该控件的渐变色设置的外部接口还未实现，但是你可以重写Slider.__createGradient()，以实现不一样的渐变色控件
 
 # 通知组件-Notification Components
 ## 提示弹窗-TipsWidget
@@ -249,11 +250,13 @@
 ### 说明：
 1. 参数📃
    - radius:表盘大小
-   - width_arc:圆环宽度
    - color_triangle:指针的颜色
    - color_arc_sub:圆环内已覆盖区域的颜色
    - color_arc_add:圆环内未覆盖区域的颜色
-   - color_text:文字的颜色 
+   - color_font:文字的颜色
+   - text_unit:数值的单位
+   - text_y:文本的位置(原点位置在组件(圆环)的中心)
+   - text_height:文本的高度
 2. 方法📃
    - updateValue():更新当前值
    - setRange():设置数值范围
