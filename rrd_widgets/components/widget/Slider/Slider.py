@@ -7,93 +7,131 @@ class Silder(QSlider):
         super().__init__(orientation, parent=parent)
         self.__is_hovering_handle = False
         self.__is_pressed_handle = False
-        self.__pressedPos = 0
-        self.__paramsConfig()
-
         self.setMouseTracking(True)
+        self.__paramsConfig()
+        self.__pressedPos = 0
 
     def __paramsConfig(self):
         # 颜色
-        self.__color_groove_add = QColor(231, 227, 228)
         self.__color_groove_sub = QColor(148, 59, 142)
-        self.__color_handle_outside = QColor(QColor(255, 255, 255))
-        self.__color_handle_inside = QColor(QColor(148, 59, 142))
+        self.__color_groove_add = QColor(231, 227, 228)
+        self.__color_handle_inside = QColor(148, 59, 142)
+        self.__color_handle_outside = QColor(231, 227, 228)
 
         # 线宽
-        self.__width_line = 6
+        self.__width_line = 10
 
         # padding
         self.__padding = 15
 
         # handle 半径
-        self.radius_handle = 10
+        self.__radius_handle = 10
+
+    def setParmas(self, color_groove_sub: QColor = QColor(148, 59, 142),
+                  color_groove_add: QColor = QColor(231, 227, 228),
+                  color_handle_inside: QColor = QColor(148, 59, 142),
+                  color_handle_outside: QColor = QColor(255, 255, 255),
+                  width_line: int = 6, radius_handle: int = 10,padding:int = 15):
+        # 颜色
+        self.__color_groove_sub = color_groove_sub
+        self.__color_groove_add = color_groove_add
+        self.__color_handle_inside = color_handle_inside
+        self.__color_handle_outside = color_handle_outside
+
+        # 线宽
+        self.__width_line = width_line
+
+        # handle 半径
+        self.__radius_handle = radius_handle
+
+        self.__padding = padding
+
+        self.update()
 
     def paintEvent(self, event: QPaintEvent):
         painter = QPainter(self)
-        painter.setRenderHints(QPainter.SmoothPixmapTransform | QPainter.Antialiasing)
         painter.setPen(Qt.NoPen)
-        self.__paintGroove(painter)
-        self.__paintHandle(painter)
+        painter.setRenderHints(QPainter.SmoothPixmapTransform | QPainter.Antialiasing)
+        self.__drawGroove(painter)
+        self.__drawHandle(painter)
 
-    def __paintGroove(self, painter: QPainter):
+    def __createGradient(self):
+        if self.orientation() == Qt.Orientation.Horizontal:
+            gradient = QLinearGradient(10, 10, self.width() - 10, 10)
+            gradient.setColorAt(0, QColor("#943b8e"))
+            gradient.setColorAt(0.5, QColor("#ca3fa1"))
+            gradient.setColorAt(1, QColor(0,89,89))
+        else:
+            gradient = QLinearGradient(10, 10, 10, self.height() - 10)
+            gradient.setColorAt(0, QColor("#943b8e"))
+            gradient.setColorAt(0.5, QColor("#ca3fa1"))
+            gradient.setColorAt(1, QColor("#ff42b3"))
+
+        return gradient
+
+    def __drawGroove(self, painter: QPainter):
         painter.save()
 
-        pen = QPen()
-        pen.setCapStyle(Qt.RoundCap)
-        pen.setWidth(self.__width_line)
-        pen.setColor(self.__color_groove_add)
-
-        painter.setPen(pen)
-
+        painter.setBrush(self.__color_groove_add)
         if self.orientation() == Qt.Orientation.Horizontal:
-            painter.drawLine(QPoint(self.__padding, self.__padding),
-                             QPoint(self.width() - self.__padding * 2, self.__padding))
+            painter.drawRoundedRect(
+                QRect(self.__padding, self.__padding - self.__width_line // 2, self.width() - self.__padding * 2,
+                      self.__width_line),
+                self.__width_line / 2, self.__width_line / 2)
         else:
-            painter.drawLine(QPoint(self.__padding, self.height() - self.__padding * 2),
-                             QPoint(self.__padding, self.__padding))
+            painter.drawRoundedRect(
+                QRect(self.__padding - self.__width_line // 2, self.__padding, self.__width_line,
+                      self.height() - self.__padding * 2),
+                self.__width_line / 2, self.__width_line / 2)
 
         if self.value():
             args = self.width() if self.orientation() == Qt.Orientation.Horizontal else self.height()
-            xy = int(((args - self.__padding * 2) / (self.maximum() - self.minimum())) * (self.value() - self.minimum()) + self.__padding)
+            xy = int(((args - self.__padding * 2) / (self.maximum() - self.minimum())) * (
+                    self.value() - self.minimum()) + self.__padding)
             xy = xy if xy <= args - self.__padding else args - self.__padding
 
-            pen.setColor(self.__color_groove_sub)
-            painter.setPen(pen)
+            painter.setBrush(self.__color_groove_sub)
 
             if self.orientation() == Qt.Orientation.Horizontal:
-                painter.drawLine(QPoint(self.__padding, self.__padding), QPoint(xy, self.__padding))
+                painter.drawRoundedRect(
+                    QRect(self.__padding, self.__padding - self.__width_line // 2, xy - self.__padding,
+                          self.__width_line),
+                    self.__width_line / 2, self.__width_line / 2)
             else:
-                painter.drawLine(QPoint(self.__padding, self.__padding),QPoint(self.__padding, xy))
+                painter.drawRoundedRect(
+                    QRect(self.__padding - self.__width_line // 2, self.__padding, self.__width_line,
+                          xy - self.__padding),
+                    self.__width_line / 2, self.__width_line / 2)
 
         painter.restore()
 
-    def __paintHandle(self, painter: QPainter):
+    def __drawHandle(self, painter: QPainter):
         painter.save()
 
         point = self.__getHandlePos()
 
         if self.__is_hovering_handle:
-            radius_big = self.radius_handle + 3
-            radius_little = int(self.radius_handle * 0.6)
+            radius_big = self.__radius_handle + 3
+            radius_little = int(self.__radius_handle * 0.6)
         else:
-            radius_big = self.radius_handle
-            radius_little = int(self.radius_handle * 0.6)
-        # 外圆部分
+            radius_big = self.__radius_handle
+            radius_little = int(self.__radius_handle * 0.6)
+
         painter.setBrush(self.__color_handle_outside)
         painter.drawEllipse(point, radius_big, radius_big)
 
-        # 内圆部分
         painter.setBrush(self.__color_handle_inside)
         painter.drawEllipse(point, radius_little, radius_little)
 
         painter.restore()
 
     def mousePressEvent(self, e: QMouseEvent):
+        self.__is_pressed_handle = True
         self.__pressedPos = e.position()
         self.setValue(self.__getCurrentValue(e.position()))
-        self.__is_pressed_handle = True
 
     def mouseMoveEvent(self, e: QMouseEvent):
+        # mouseMoveEvent不会调用update()
         if self.__is_pressed_handle:
             self.setValue(self.__getCurrentValue(e.position()))
 
@@ -117,12 +155,13 @@ class Silder(QSlider):
         slider_lenth = int(
             (self.width() if self.orientation() == Qt.Orientation.Horizontal else self.height()) - self.__padding * 2)
         per = (self.maximum() - self.minimum()) / slider_lenth
-        return int(pos_value * per)
+        return int(pos_value * per + self.minimum())
 
     def __getHandlePos(self):
         slider_lenth_var = int(
             (self.width() if self.orientation() == Qt.Orientation.Horizontal else self.height()) - self.__padding * 2)
-        xy = int((self.value() - self.minimum())/ ((self.maximum() - self.minimum()) / slider_lenth_var) + self.__padding)
+        xy = int(
+            (self.value() - self.minimum()) / ((self.maximum() - self.minimum()) / slider_lenth_var) + self.__padding)
 
         if self.orientation() == Qt.Orientation.Horizontal:
             xy = xy if xy <= self.width() - self.__padding else self.width() - self.__padding
@@ -132,8 +171,8 @@ class Silder(QSlider):
             return QPoint(self.__padding, xy)
 
     def __getHandleRect(self) -> QRect:
-        pos = QPoint(self.__getHandlePos().x() - self.radius_handle, self.__getHandlePos().y() - self.radius_handle)
-        size = QSize(self.radius_handle * 2, self.radius_handle * 2)
+        pos = QPoint(self.__getHandlePos().x() - self.__radius_handle, self.__getHandlePos().y() - self.__radius_handle)
+        size = QSize(self.__radius_handle * 2, self.__radius_handle * 2)
 
-        return QRect(pos, size).adjusted(-10,-10,10,10)
+        return QRect(pos, size).adjusted(-10, -10, 10, 10)
 
