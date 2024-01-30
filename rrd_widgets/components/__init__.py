@@ -16,6 +16,7 @@ Information:
 :copyright: (c) 2023 by Rev-RoastedDuck.
 :license: GPLv3, see LICENSE for more details.
 """
+from .instrument import *
 from .container import *
 from .widget import *
 from .layout import *
