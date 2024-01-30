@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import  QSlider
-from PySide6.QtGui import QPainter, QColor, QPaintEvent, QPen,QMouseEvent
+from PySide6.QtGui import QPainter, QColor, QPaintEvent, QPen, QMouseEvent, QLinearGradient
 from PySide6.QtCore import Qt, QRect, QPoint, QSize
 
 class Silder(QSlider):
@@ -15,8 +15,8 @@ class Silder(QSlider):
         # 颜色
         self.__color_groove_sub = QColor(148, 59, 142)
         self.__color_groove_add = QColor(231, 227, 228)
-        self.__color_handle_inside = QColor(148, 59, 142)
-        self.__color_handle_outside = QColor(231, 227, 228)
+        self.__color_handle_inside = QColor(QColor(148, 59, 142))
+        self.__color_handle_outside = QColor(QColor(255, 255, 255))
 
         # 线宽
         self.__width_line = 10
@@ -90,7 +90,7 @@ class Silder(QSlider):
                     self.value() - self.minimum()) + self.__padding)
             xy = xy if xy <= args - self.__padding else args - self.__padding
 
-            painter.setBrush(self.__color_groove_sub)
+            painter.setBrush(self.__createGradient())
 
             if self.orientation() == Qt.Orientation.Horizontal:
                 painter.drawRoundedRect(
@@ -134,6 +134,7 @@ class Silder(QSlider):
         # mouseMoveEvent不会调用update()
         if self.__is_pressed_handle:
             self.setValue(self.__getCurrentValue(e.position()))
+            print(self.value())
 
         handle_rect = self.__getHandleRect()
         if handle_rect.contains(e.position().toPoint()):
