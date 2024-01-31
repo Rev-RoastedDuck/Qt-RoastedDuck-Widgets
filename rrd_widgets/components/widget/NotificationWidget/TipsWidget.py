@@ -108,10 +108,7 @@ class TipsWidget(WidgetAnimationBase):
         pen.setColor(color["text_color"])
         painter.setPen(pen)
 
-        font = QFont()
-        font.setBold(False)
-        font.setPointSize(11)
-        painter.setFont(font)
+        painter.setFont(self.font())
 
         textOption = QTextOption(Qt.AlignLeft | Qt.AlignVCenter)
         painter.drawText(text_rect, self.message, textOption)
