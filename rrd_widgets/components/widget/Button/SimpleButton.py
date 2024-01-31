@@ -44,18 +44,10 @@ class SimpleButtonBase(ButtonAnimationBase):
             painter.drawText(self.rect(), Qt.AlignCenter, self.text())
         painter.restore()
 
-    def __drawBorder(self,painter:QPainter):
-        painter.save()
-        pen = QPen()
-        pen.setWidth(2)
-        pen.setColor(self.full_color)
-
-        painter.setPen(pen)
-        painter.drawRoundedRect(self.rect(),self.border_radius,self.border_radius)
-        painter.restore()
+    def drawBorder(self,painter:QPainter):
+        pass
 
     def paintEvent(self, event):
-        super().paintEvent(event)
 
         painter = QPainter(self)
         painter.setPen(Qt.NoPen)
@@ -65,14 +57,40 @@ class SimpleButtonBase(ButtonAnimationBase):
         path.addRoundedRect(self.rect(), self.border_radius, self.border_radius)
         painter.setClipPath(path)
 
-        self.__drawBorder(painter)
+        self.drawBorder(painter)
         self.drawForeground(painter)
         self.__drawText(painter)
 
     def drawForeground(self, painter: QPainter):
         pass
 
-class SimpleButton_1(SimpleButtonBase):
+class SimpleButton14Base(SimpleButtonBase):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.is_enter = False
+
+    def drawBorder(self,painter:QPainter):
+        painter.save()
+        pen = QPen()
+        pen.setWidth(2)
+        pen.setColor(self.full_color)
+
+        painter.setPen(pen)
+        painter.drawRoundedRect(self.rect(), self.border_radius, self.border_radius)
+        painter.restore()
+
+    def enterEvent(self, event):
+        self.is_enter = True
+        self.font_color = self.font_anim_finish_color
+        self.animForwardRun()
+
+    def leaveEvent(self, event):
+        self.is_enter = False
+        self.font_color = self.font_anim_start_color
+        self.animBackwardRun()
+
+
+class SimpleButton_1(SimpleButton14Base):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.radius = 0
@@ -91,18 +109,10 @@ class SimpleButton_1(SimpleButtonBase):
         painter.drawEllipse(QPoint(self.width(), self.height()), self.radius, self.radius)
         painter.restore()
 
-    def enterEvent(self, event):
-        self.font_color = self.font_anim_finish_color
-        self.animForwardRun()
-
-    def leaveEvent(self, event):
-        self.font_color = self.font_anim_start_color
-        self.animBackwardRun()
-
     def onAnimParamChangeSignal(self, v):
         self.radius = v
 
-class SimpleButton_2(SimpleButtonBase):
+class SimpleButton_2(SimpleButton14Base):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.rect_width = 0
@@ -118,14 +128,6 @@ class SimpleButton_2(SimpleButtonBase):
 
         painter.restore()
 
-    def enterEvent(self, event):
-        self.font_color = self.font_anim_finish_color
-        self.animForwardRun()
-
-    def leaveEvent(self, event):
-        self.font_color = self.font_anim_start_color
-        self.animBackwardRun()
-
     def onAnimParamChangeSignal(self, v):
         self.rect_width = v
 
@@ -134,7 +136,7 @@ class SimpleButton_2(SimpleButtonBase):
         max = (self.width() ** 2 + self.height() ** 2) ** 0.5
         return min, max
 
-class SimpleButton_3(SimpleButtonBase):
+class SimpleButton_3(SimpleButton14Base):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.radius = 0
@@ -150,14 +152,6 @@ class SimpleButton_3(SimpleButtonBase):
         painter.drawEllipse(QPoint(0, 0), radius_x, radius_y)
         painter.restore()
 
-    def enterEvent(self, event):
-        self.font_color = self.font_anim_finish_color
-        self.animForwardRun()
-
-    def leaveEvent(self, event):
-        self.font_color = self.font_anim_start_color
-        self.animBackwardRun()
-
     def onAnimParamChangeSignal(self, v):
         self.radius = v
 
@@ -166,11 +160,11 @@ class SimpleButton_3(SimpleButtonBase):
         max = (self.width() ** 2 + self.height() ** 2) ** 0.5
         return min, max
 
-class SimpleButton_4(SimpleButtonBase):
+class SimpleButton_4(SimpleButton14Base):
     def __init__(self,parent=None):
         super().__init__(parent)
         self.rect_width = 0
-        self.is_enter = False
+
 
     def drawForeground(self,painter:QPainter):
         painter.save()
@@ -184,16 +178,6 @@ class SimpleButton_4(SimpleButtonBase):
             painter.rotate(180)
             painter.drawRect(QRectF(0, 0, self.rect_width, self.height()))
         painter.restore()
-
-    def enterEvent(self, event):
-        self.is_enter = True
-        self.font_color = self.font_anim_finish_color
-        self.animForwardRun()
-
-    def leaveEvent(self, event):
-        self.is_enter = False
-        self.font_color = self.font_anim_start_color
-        self.animBackwardRun()
 
     def onAnimParamChangeSignal(self, v):
         self.rect_width = v
@@ -285,6 +269,10 @@ class SimpleButton_5(SimpleButtonBase):
 class SimpleButton_6(SimpleButtonBase):
     def __init__(self,parent=None):
         super().__init__(parent)
+        self.second_text = ""
+        self.first_text = ""
+        self.second_background_color = QColor()
+        self.first_background_color = QColor()
         self.anima_width = 0
         self.is_enter = False
 
