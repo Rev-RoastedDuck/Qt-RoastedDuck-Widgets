@@ -242,6 +242,11 @@ class SimpleButton_5(SimpleButtonBase):
     def mouseReleaseEvent(self, event):
         self.is_enter = True
         self.animForwardRun()
+        QTimer.singleShot(self.anim_msecs+1000, lambda: self.__animFin())
+
+    def __animFin(self):
+        self.is_enter = False
+        self.animBackwardRun()
 
     def leaveEvent(self, event):
         self.is_enter = False
@@ -297,6 +302,11 @@ class SimpleButton_6(SimpleButtonBase):
     def mouseReleaseEvent(self, event):
         self.is_enter = True
         self.animForwardRun()
+        QTimer.singleShot(self.anim_msecs+1000, lambda: self.__animFin())
+
+    def __animFin(self):
+        self.is_enter = False
+        self.animBackwardRun()
 
     def leaveEvent(self, event):
         self.is_enter = False
