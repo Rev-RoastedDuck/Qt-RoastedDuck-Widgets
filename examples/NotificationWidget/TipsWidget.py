@@ -50,6 +50,7 @@ class Window(QWidget):
         tip.setText("Success|Description of the success")
         tip.status = TipsStatus.Succeed
         tip.move(120, 20)
+        tip.resize(420,30)
         tip.show()
 
     def onWarning(self):
@@ -57,6 +58,8 @@ class Window(QWidget):
         tip.setText("Warning|Description of the action warning")
         tip.status = TipsStatus.Warning
         tip.move(120, 50)
+        tip.resize(420,30)
+
         tip.show()
 
     def onDangerous(self):
@@ -64,6 +67,8 @@ class Window(QWidget):
         tip.setText("Danger|Information description of hazards")
         tip.status = TipsStatus.Dangerous
         tip.move(120, 80)
+        tip.resize(420,30)
+
         tip.show()
 
 
