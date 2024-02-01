@@ -23,6 +23,13 @@
   - **输入框-LineEdit**
     - [伸缩输入框-ExpandLineEdit](#伸缩输入框-ExpandLineEdit)
     - [简易输入框-SimpleLineEdit](#简易输入框-SimpleLineEdit)
+  
+  - **组合框-ComboBox**
+    - [组合框-ComboBox](#组合框-ComboBox)
+      
+  - **复选框-CheckBox**
+    - [复选框-CheckBox](#复选框-CheckBox)
+
    
   - **容器-Container**
     - [发散按钮容器-RExpandButtonBox](#发散按钮容器-RExpandButtonBox)
@@ -144,6 +151,19 @@
    - border_radius：圆角大小
 2. 方法📃
    - setParams()：配置控件的样式参数
+
+
+# 组合框-ComboBox
+## 组合框-ComboBox
+### 效果:
+![组合框](./Demo/ComboBox.png)
+
+
+# 复选框-CheckBox
+## 复选框-CheckBox
+### 效果:
+![复选框](./Demo/CheckBox.png)
+
 
 
 # 容器-Container
