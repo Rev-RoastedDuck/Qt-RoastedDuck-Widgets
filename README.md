@@ -157,13 +157,43 @@
 ## 组合框-ComboBox
 ### 效果:
 ![组合框](./Demo/ComboBox.png)
+### 说明:
+1. 参数📃
+   - ComboBoxItem
+     - color_font:item的字体颜色
+     - color_hover:鼠标悬浮时，item的背景颜色
+     - color_border:item的边框颜色
+     - color_background:item的背景颜色
+     - border_radius:item的圆角大小
+     - item_spacing:item的间距
+     - item_height:item的高度
+   - ComboBoxWidget
+     - border_radius:控件的圆角大小
+     - background_color:控件的背景颜色
+2. 方法📃
+   - getCurrIndex() -> int :获取当前被选中的Item的index
+   - getCurrText() -> str :获取当前被选中的Item的文本
+   - itemData(index: int) -> Any :通过index获取对应的data
+   - itemText(index: int) -> str :通过index获取对应的文本
+   - itemIcon(index: int) -> QIcon :通过index获取对应的图标
+   - addItem(icon: QIcon, text: str, data) -> None :添加Item
+   - addItems(self, items: List[str]) -> None :批量添加Item
+   - clear() -> None :清空Item
+   - setFont() -> None :设置字体
+   - setItemHeight(self, h: int) -> None :设置Item的高度
+   - setItemParams(...) -> None :设置Item样式
+   - setParams(...) -> None :设置组件样式
 
 
 # 复选框-CheckBox
 ## 复选框-CheckBox
 ### 效果:
 ![复选框](./Demo/CheckBox.png)
-
+### 说明:
+1. 参数📃
+2. 方法📃
+   - setFont(font:QFont) -> None :设置字体
+   - setText(text:str) -> None :设置文本
 
 
 # 容器-Container
