@@ -183,6 +183,7 @@
    - setItemHeight(self, h: int) -> None :设置Item的高度
    - setItemParams(...) -> None :设置Item样式
    - setParams(...) -> None :设置组件样式
+   - setCurrentIndex(index:int) -> None :设置设置默认值
 
 
 # 复选框-CheckBox
