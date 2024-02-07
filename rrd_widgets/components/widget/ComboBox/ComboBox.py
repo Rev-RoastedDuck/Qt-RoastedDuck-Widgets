@@ -353,22 +353,21 @@ class ComboBoxWidget(QWidget):
     def addItem(self, icon: QIcon, text: str, data) -> None:
         item: ComboBoxItem = {"text": text, "icon": icon, "data": data}
         self.items.append(item)
+        if not self._curr_text and len(self.items):
+            self.__onTriggerSignal(0)
 
     def addItems(self, items: List[str]) -> None:
         for item in items:
             item_temp: ComboBoxItem = {"text": item, "icon": QIcon(), "data": 0}
             self.items.append(item_temp)
         if not self._curr_text and len(self.items):
-            self.editer.setText(self.items[0]["text"])
+            self.__onTriggerSignal(0)
 
     def clear(self):
         self.items.clear()
 
     def showEvent(self, event) -> None:
         super(ComboBoxWidget, self).showEvent(event)
-        if len(self.items):
-            self.__onTriggerSignal(0)
-
         h = self.height()
         self.button.resize(h+2, h)
         self.editer.resize(self.width()-h-2, h)
@@ -385,6 +384,9 @@ class ComboBoxWidget(QWidget):
 
     def curr_index(self):
         return self._curr_index
+
+    def setCurrentIndex(self,index:int):
+        self.__onTriggerSignal(index)
 
     def eventFilter(self, obj, event:QEvent):
         if self.pop_widget:
