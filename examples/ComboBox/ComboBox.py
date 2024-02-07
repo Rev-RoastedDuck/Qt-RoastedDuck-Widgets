@@ -32,6 +32,7 @@ if __name__ == "__main__":
     c.setParams(border_radius=5,
                 background_color=QColor(255, 255, 255)
                 )
+    c.setCurrentIndex(1)
 
     window.show()
 
