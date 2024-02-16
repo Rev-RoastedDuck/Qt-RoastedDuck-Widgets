@@ -19,12 +19,14 @@ Information:
 
 from typing import TypedDict, Any, List
 
-from PySide6.QtWidgets import QWidget, QGraphicsDropShadowEffect, QPushButton, QHBoxLayout
 from PySide6.QtCore import QRect, QPropertyAnimation, QSize, QTimer, Qt, Signal, QPoint, QEvent, QEasingCurve
-from PySide6.QtGui import QShowEvent, QIcon, QColor, QPainterPath, QPainter, QBrush, QPen, QTextOption, QEnterEvent,QMouseEvent, QFont
+from PySide6.QtGui import QShowEvent, QIcon, QColor, QPainterPath, QPainter, QBrush, QPen, QTextOption, QEnterEvent, \
+    QMouseEvent, QFont
+from PySide6.QtWidgets import QWidget, QGraphicsDropShadowEffect, QPushButton, QHBoxLayout
 
+from ..LineEdit.SimpleLineEdit import SimpleLineEdit_1
 from ...layout.RVBoxLayout import VBoxLayoutManager
-from ....common.icon.binary_data_icon import icon_comboBox as icon
+from ....common import resource
 
 
 class ComboBoxItem(TypedDict):
@@ -264,7 +266,7 @@ class ComboBoxWidget(QWidget):
         self.setGraphicsEffect(shadow)
 
         icon = QIcon()
-        icon.addFile(":/icon/arrow.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(":/icon_svg/icon_svg/under.svg", QSize(), QIcon.Normal, QIcon.Off)
 
         self.button = QPushButton(self)
         self.button.setIcon(icon)
@@ -368,6 +370,7 @@ class ComboBoxWidget(QWidget):
 
     def showEvent(self, event) -> None:
         super(ComboBoxWidget, self).showEvent(event)
+
         h = self.height()
         self.button.resize(h+2, h)
         self.editer.resize(self.width()-h-2, h)
@@ -385,11 +388,12 @@ class ComboBoxWidget(QWidget):
     def curr_index(self):
         return self._curr_index
 
-    def setCurrentIndex(self,index:int):
-        self.__onTriggerSignal(index)
-
     def eventFilter(self, obj, event:QEvent):
         if self.pop_widget:
             if (not obj == self.pop_widget) and event.type() == QEvent.MouseButtonRelease:
                 self.pop_widget.pop_hide_signal.emit()
         return super().eventFilter(obj, event)
+
+    def setCurrentIndex(self,index:int):
+        self.__onTriggerSignal(index)
+
