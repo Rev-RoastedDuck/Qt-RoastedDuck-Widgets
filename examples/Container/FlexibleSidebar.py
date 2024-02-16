@@ -4,36 +4,36 @@ from PySide6.QtCore import QSize
 from PySide6.QtGui import QIcon, QFont, QColor
 from PySide6.QtWidgets import QApplication, QWidget
 
-from rrd_widgets import FlexibleSidebarButton,FlexibleSidebar
-
+from rrd_widgets import FlexibleSidebarButton,FlexibleSidebar,FlexibleSidebar_1
+from rrd_widgets.common import resource
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     w = QWidget()
-    w.setGeometry(200, 100, 320, 400)
-    w.setStyleSheet("background-color:#ffffff;")
+    # w.setGeometry(200, 100, 320, 400)
+    w.setStyleSheet("background-color:#000000;")
 
     icon1 = QIcon()
-    icon1.addFile(":/icon/\u56fe\u6807/\u5173\u95ed (1).png", QSize(), QIcon.Normal, QIcon.Off)
+    icon1.addFile(":/icon_svg/icon_svg/close.svg", QSize(), QIcon.Normal, QIcon.Off)
     icon2 = QIcon()
-    icon2.addFile(":/icon/\u56fe\u6807/\u767b\u5f55.png", QSize(), QIcon.Normal, QIcon.Off)
+    icon2.addFile(":/icon_svg/icon_svg/enter.svg", QSize(), QIcon.Normal, QIcon.Off)
     icon3 = QIcon()
-    icon3.addFile(":/icon/\u56fe\u6807/\u786e\u8ba4\u5bc6\u7801.png", QSize(), QIcon.Normal, QIcon.Off)
+    icon3.addFile(":/icon_svg/icon_svg/set-key.svg", QSize(), QIcon.Normal, QIcon.Off)
     icon4 = QIcon()
-    icon4.addFile(":/icon/\u56fe\u6807/\u4f1a\u5458\u6ce8\u518c\u767b\u5f55\u7ba1\u7406.png", QSize(), QIcon.Normal, QIcon.Off)
+    icon4.addFile(":/icon_svg/icon_svg/resign.svg", QSize(), QIcon.Normal, QIcon.Off)
     icon5 = QIcon()
-    icon5.addFile(":/icon/\u56fe\u6807/\u9a8c\u8bc1 \u9a8c\u8bc1\u7801.png", QSize(), QIcon.Normal, QIcon.Off)
+    icon5.addFile(":/icon_svg/icon_svg/verify.svg", QSize(), QIcon.Normal, QIcon.Off)
     icon6 = QIcon()
-    icon6.addFile(":/icon/\u56fe\u6807/\u5206\u4eab.png", QSize(), QIcon.Normal, QIcon.Off)
+    icon6.addFile(":/icon_svg/icon_svg/share.svg", QSize(), QIcon.Normal, QIcon.Off)
 
 
     font = QFont()
     font.setPointSize(10)
 
-    sliderbar = FlexibleSidebar(w)
-    sliderbar.setParams(53, 141, background_color=QColor(0, 89, 89, 200), border_radius=15)
-    sliderbar.setGeometry(100, 40, 141, 271)
+    sliderbar = FlexibleSidebar_1(w)
+    sliderbar.setParams(50, 141, background_color=QColor(0, 89, 89, 200), border_radius=15,both_sides_stretching=False)
+    sliderbar.setGeometry(150, 80, 141, 271)
 
     btn_1 = FlexibleSidebarButton(text="Close", icon=icon1, parent=sliderbar)
     btn_2 = FlexibleSidebarButton(text="Enter", icon=icon2, parent=sliderbar)

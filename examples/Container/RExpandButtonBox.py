@@ -13,6 +13,7 @@ from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication,QWidget
 
 from rrd_widgets import RButton, RExpandButtonBox
+from rrd_widgets.common import resource
 
 if __name__ == '__main__':
     app = QApplication()
@@ -27,56 +28,56 @@ if __name__ == '__main__':
     if True:
         pushButton_NW = RButton(sizeRButton)
         icon_NW = QIcon()
-        icon_NW.addFile(u":/icon/\u56fe\u6807/\u9f7f\u8f6e_cogwheel23.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon_NW.addFile(u":/icon_svg/icon_svg/speaker.svg", QSize(), QIcon.Normal, QIcon.Off)
         pushButton_NW.pushButton.setIcon(icon_NW)
         pushButton_NW.pushButton.setIconSize(iconRButton)
 
         pushButton_SE = RButton(sizeRButton)
         icon_SE = QIcon()
-        icon_SE.addFile(u":/icon/\u56fe\u6807/\u5587\u53ed.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon_SE.addFile(u":/icon_svg/icon_svg/trash_can.svg", QSize(), QIcon.Normal, QIcon.Off)
         pushButton_SE.pushButton.setIcon(icon_SE)
         pushButton_SE.pushButton.setIconSize(iconRButton)
 
         pushButton_W = RButton(sizeRButton)
         icon_W = QIcon()
-        icon_W.addFile(u":/icon/\u56fe\u6807/\u5f55\u50cf.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon_W.addFile(u":/icon_svg/icon_svg/user.svg", QSize(), QIcon.Normal, QIcon.Off)
         pushButton_W.pushButton.setIcon(icon_W)
         pushButton_W.pushButton.setIconSize(iconRButton)
 
         pushButton_SW = RButton(sizeRButton)
         icon_SW = QIcon()
-        icon_SW.addFile(u":/icon/\u56fe\u6807/\u7ef4\u4fee.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon_SW.addFile(u":/icon_svg/icon_svg/game.svg", QSize(), QIcon.Normal, QIcon.Off)
         pushButton_SW.pushButton.setIcon(icon_SW)
         pushButton_SW.pushButton.setIconSize(iconRButton)
 
         pushButton_N = RButton(sizeRButton)
         icon_SW = QIcon()
-        icon_SW.addFile(u":/icon/\u56fe\u6807/\u8054\u7cfb\u4eba.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon_SW.addFile(u":/icon_svg/icon_svg/save_card.svg", QSize(), QIcon.Normal, QIcon.Off)
         pushButton_N.pushButton.setIcon(icon_SW)
         pushButton_N.pushButton.setIconSize(iconRButton)
 
         pushButton_NE = RButton(sizeRButton)
         iconNE = QIcon()
-        iconNE.addFile(u":/icon/\u56fe\u6807/\u6e38\u620f\uff0c\u6e38\u620f\u673a.png", QSize(), QIcon.Normal,
+        iconNE.addFile(u":/icon_svg/icon_svg/share.svg", QSize(), QIcon.Normal,
                        QIcon.Off)
         pushButton_NE.pushButton.setIcon(iconNE)
         pushButton_NE.pushButton.setIconSize(iconRButton)
 
         pushButton_E = RButton(sizeRButton)
         icon_E = QIcon()
-        icon_E.addFile(u":/icon/\u56fe\u6807/\u4fdd\u5b58.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon_E.addFile(u":/icon_svg/icon_svg/speaker.svg", QSize(), QIcon.Normal, QIcon.Off)
         pushButton_E.pushButton.setIcon(icon_E)
         pushButton_E.pushButton.setIconSize(iconRButton)
 
         pushButton_Center = RButton(sizeRButton)
         icon5_Center = QIcon()
-        icon5_Center.addFile(u":/icon/\u56fe\u6807/\u5783\u573e\u6876 (2).png", QSize(), QIcon.Normal, QIcon.Off)
+        icon5_Center.addFile(u":/icon_svg/icon_svg/trash_can.svg", QSize(), QIcon.Normal, QIcon.Off)
         pushButton_Center.pushButton.setIcon(icon5_Center)
         pushButton_Center.pushButton.setIconSize(iconRButton)
 
         pushButton_S = RButton(sizeRButton)
         icon_S = QIcon()
-        icon_S.addFile(u":/icon/\u56fe\u6807/408\u6761\u5f62\u56fe-\u7ebf\u6027.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon_S.addFile(u":/icon_svg/icon_svg/camera.svg", QSize(), QIcon.Normal, QIcon.Off)
         pushButton_S.pushButton.setIcon(icon_S)
         pushButton_S.pushButton.setIconSize(iconRButton)
 
