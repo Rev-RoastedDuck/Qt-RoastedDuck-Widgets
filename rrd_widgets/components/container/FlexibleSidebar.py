@@ -1,6 +1,6 @@
-from PySide6.QtCore import Qt, QSize
+from PySide6.QtCore import QSize, Qt
 from PySide6.QtGui import QColor, QPainter, QPainterPath, QIcon
-from PySide6.QtWidgets import QPushButton, QVBoxLayout
+from PySide6.QtWidgets import QPushButton, QVBoxLayout, QBoxLayout
 
 from ..base import WidgetAnimationGroupBase
 from ..widget.Button.BaseButton import BaseButton, BaseClickedHoveringButton
@@ -44,9 +44,10 @@ class FlexibleSidebarBase(WidgetAnimationGroupBase):
 
     def componentInit(self):
         self.vbox = QVBoxLayout(self)
-        self.vbox.addStretch()
         self.vbox.setSpacing(8)
         self.vbox.setContentsMargins(10, 15, 10, 10)
+        self.vbox.setDirection(QBoxLayout.BottomToTop)
+        self.vbox.addStretch()
 
     def animConfig(self):
         self.start_show_x = self.x()
@@ -80,7 +81,7 @@ class FlexibleSidebarBase(WidgetAnimationGroupBase):
             self.setGeometry(self.x(), self.y(), width, self.height())
 
     def addWidget(self, widget: QPushButton):
-        self.vbox.insertWidget(-1, widget)
+        self.vbox.insertWidget(1,widget)
         widget.clicked.connect(self.onItemClicked)
 
     def onItemClicked(self):
@@ -129,9 +130,12 @@ class FlexibleSidebar_Click(FlexibleSidebarBase):
         self.btn.setFixedHeight(30)
         self.btn.setIcon(icon)
         self.btn.setText("More")
-        self.btn.setParams(font_color=QColor(255, 255, 255), background_color=QColor(0, 89, 89))
+        self.btn.setParams(font_color=QColor(255, 255, 255),background_color=QColor(0,0,0,0))
         self.btn.clicked.connect(self.onAnimRun)
-        self.vbox.addWidget(self.btn)
+        self.vbox.insertWidget(1,self.btn)
+    def addWidget(self, widget: QPushButton):
+        super().addWidget(widget)
+        self.btn.setFont(widget.font())
 
     def onAnimRun(self):
         if not self.is_focus:
@@ -140,3 +144,4 @@ class FlexibleSidebar_Click(FlexibleSidebarBase):
         else:
             self.is_focus = False
             self.animBackwardRun()
+
