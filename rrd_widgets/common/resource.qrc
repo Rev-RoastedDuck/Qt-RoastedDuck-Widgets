@@ -1,6 +1,6 @@
 <RCC>
   <qresource prefix="icon_svg">
-    <file>icon_svg/share.svg</file>
+    <file>icon_svg/more.svg</file>
     <file>icon_svg/share.svg</file>
     <file>icon_svg/camera.svg</file>
     <file>icon_svg/close.svg</file>
