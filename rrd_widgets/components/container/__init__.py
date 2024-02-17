@@ -17,6 +17,6 @@ Information:
 :license: GPLv3, see LICENSE for more details.
 """
 from .DynamicBorderWidget import DynamicBorderWidget
-from .FlexibleSidebar import FlexibleSidebarButton,FlexibleSidebar
+from .FlexibleSidebar import FlexibleSidebarButton,FlexibleSidebar_Click,FlexibleSidebar_Hover,FlexibleSidebarButton
 from .RExpandButtonBox import RExpandButtonBox,RButton
 from .SlideshowWidget import SlideShowWidget
