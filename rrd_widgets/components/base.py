@@ -20,7 +20,9 @@ Information:
 from typing import Tuple, Any
 from abc import abstractmethod
 from PySide6.QtWidgets import QPushButton, QWidget, QLineEdit
-from PySide6.QtCore import Property, QPropertyAnimation, Signal, QParallelAnimationGroup, QAbstractAnimation
+from PySide6.QtCore import Property, QPropertyAnimation, Signal, QParallelAnimationGroup, QAbstractAnimation, \
+    QEasingCurve
+
 
 def animation_widget_decorator(cls:QWidget):
     class AnimationWidgetBase(cls):
@@ -32,13 +34,11 @@ def animation_widget_decorator(cls:QWidget):
             self.anim_param = 0
             self.anim_msecs = 200
 
-        def __animInit(self) -> None:
             self.anim = QPropertyAnimation(self, b'animParam', self)
+
+        def __animInit(self) -> None:
             self.anim.setDuration(self.anim_msecs)
-
-            self.min_anim_param, self.max_anim_param = self.get_anim_range()
-            self.anim_param = self.min_anim_param
-
+            # self.anim.setEasingCurve(QEasingCurve.OutQuad)
             self.anim_param_change_signal.connect(self.onAnimParamChangeSignal)
 
         def animForwardRun(self) -> None:
@@ -114,10 +114,17 @@ def animation_group_widget_decorator(cls:QWidget):
             self.anim_group.setDirection(QAbstractAnimation.Backward)
             self.anim_group.start()
 
+        def is_running(self)->bool:
+            return self.anim_group.state() == QPropertyAnimation.Running
+
         def __onValueChanged(self, v: int) -> None:
-            self.anim_param_list.append(v)
+            if self.anim_group.direction() == QAbstractAnimation.Backward:
+                self.anim_param_list.append(v)
+            else:
+                self.anim_param_list.insert(0,v)
             if not len(self.anim_param_list) % (self.anim_param_count):
                 self.anim_param_change_signal.emit(self.anim_param_list)
+                print(self.anim_param_list)
                 self.anim_param_list.clear()
 
         @abstractmethod
