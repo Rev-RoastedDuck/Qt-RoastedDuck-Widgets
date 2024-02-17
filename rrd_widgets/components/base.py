@@ -78,20 +78,16 @@ def animation_widget_decorator(cls:QWidget):
 
 def animation_group_widget_decorator(cls:QWidget):
     class QWidgetAnimationGroupBase(cls):
-        """
-            触发条件:鼠标划入滑出
-        """
-
         anim_param_change_signal = Signal(list)
 
         def __init__(self, parent=None):
             super().__init__(parent)
+            self.direction = QAbstractAnimation.Forward
             self.__animInit()
 
         def __animInit(self) -> None:
-            self.anim_param_count = 0
             self.anim_param_list: list = []
-            self.anim_group = QParallelAnimationGroup()
+            self.anim_group: list[QAbstractAnimation] = []
             self.anim_param_change_signal.connect(self.onAnimParamChangeSignal)
 
         def addAnimParams(self, min_v: Any, max_v: Any, time: int) -> None:
@@ -101,36 +97,47 @@ def animation_group_widget_decorator(cls:QWidget):
             anim.setEndValue(max_v)
             anim.valueChanged.connect(self.__onValueChanged)
 
-            self.anim_param_count += 1
-            self.anim_group.addAnimation(anim)
+            self.anim_group.append(anim)
 
         def animForwardRun(self) -> None:
-            self.anim_group.stop()
-            self.anim_group.setDirection(QAbstractAnimation.Forward)
-            self.anim_group.start()
+            self.stop()
+            self.setDirection(QAbstractAnimation.Forward)
+            self.start()
 
         def animBackwardRun(self) -> None:
-            self.anim_group.stop()
-            self.anim_group.setDirection(QAbstractAnimation.Backward)
-            self.anim_group.start()
+            self.stop()
+            self.setDirection(QAbstractAnimation.Backward)
+            self.start()
 
         def is_running(self)->bool:
-            return self.anim_group.state() == QPropertyAnimation.Running
+            for anim in self.anim_group:
+                if anim.state() == QPropertyAnimation.Running:
+                    return True
+            return False
 
         def __onValueChanged(self, v: int) -> None:
-            if self.anim_group.direction() == QAbstractAnimation.Backward:
-                self.anim_param_list.append(v)
-            else:
-                self.anim_param_list.insert(0,v)
-            if not len(self.anim_param_list) % (self.anim_param_count):
+            self.anim_param_list.append(v)
+            if not len(self.anim_param_list) % (len(self.anim_group)):
                 self.anim_param_change_signal.emit(self.anim_param_list)
-                print(self.anim_param_list)
                 self.anim_param_list.clear()
+
+        def stop(self):
+            for anim in self.anim_group:
+                anim.stop()
+
+        def start(self):
+            for anim in self.anim_group:
+                anim.start()
+
+        def setDirection(self,dir):
+            for anim in self.anim_group:
+                anim.setDirection(dir)
+            self.direction = dir
 
         @abstractmethod
         def onAnimParamChangeSignal(self, v: list) -> None:
             """
-            用于设置指定属性的值，吧anim_param的值赋给指定的变量
+            用于设置指定属性的值，把anim_param的值赋给指定的变量
             :param v: anima_param的数值
             :return:
             """
