@@ -1,108 +1,52 @@
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QColor, QPainter, QPainterPath
-from PySide6.QtWidgets import QPushButton, QVBoxLayout,QWidget
+from PySide6.QtCore import Qt, QSize
+from PySide6.QtGui import QColor, QPainter, QPainterPath, QIcon
+from PySide6.QtWidgets import QPushButton, QVBoxLayout
 
-from ...common.icon.binary_data_icon import icon_flexible_sidebar
 from ..base import WidgetAnimationGroupBase
+from ..widget.Button.BaseButton import BaseButton, BaseClickedHoveringButton
 
 
-class FlexibleSidebarButton(QPushButton):
+class FlexibleSidebarButton(BaseClickedHoveringButton):
     def __init__(self, parent, text=None, icon=None):
-        super().__init__(parent=parent, text=text, icon=icon)
-        self.need_show_text = True
-        self.border_radius = 0
-        self.font_color = QColor()
-        self.background_color = QColor()
-
+        super().__init__(parent=parent)
         self.setFixedHeight(30)
-        self.text_backpack = text
-
-    def hideText(self) -> None:
-        self.need_show_text = False
-
-    def showText(self) -> None:
-        self.need_show_text = True
-
-    def setParams(self,
-                  font_color: QColor,
-                  background_color: QColor,
-                  border_radius: int = 5,
-                  ):
-        self.font_color = font_color
-        self.border_radius = border_radius
-        self.background_color = background_color
-
-    def setText(self, text: str) -> None:
-        super().setText(text)
-        self.text_backpack = text
-
-    def paintEvent(self, event) -> None:
-        painter = QPainter(self)
-        painter.setPen(Qt.NoPen)
-        painter.setRenderHint(QPainter.Antialiasing)
-
-        path = QPainterPath()
-        path.addRoundedRect(self.rect(), self.border_radius, self.border_radius)
-        painter.setClipPath(path)
-
-        self.drawForeground(painter)
-        self.drawIcon(painter)
-        self.drawText(painter)
-
-    def drawIcon(self, painter: QPainter):
-        painter.save()
-        if self.icon():
-            pixmap = self.icon().pixmap(self.height()*0.7)
-            # pixmap = pixmap.scaled(int(pixmap.width() * 0.8), int(pixmap.height() * 0.8))
-            painter.drawPixmap(4, 4, pixmap)
-        painter.restore()
-
-    def drawText(self, painter: QPainter):
-        painter.save()
-        painter.setFont(self.font())
-        painter.setPen(QColor(self.font_color))
-
-        if self.text() and self.need_show_text:
-            painter.drawText(self.rect().adjusted(35, 0, 0, 0), Qt.AlignLeft | Qt.AlignVCenter, self.text())
-        painter.restore()
-
-    def drawForeground(self, painter: QPainter):
-        painter.save()
-        painter.setBrush(self.background_color)
-        painter.drawRect(self.rect())
-        painter.restore()
+        self.setText(text)
+        self.setIcon(icon)
 
 
-class FlexibleSidebar(WidgetAnimationGroupBase):
+class FlexibleSidebarBase(WidgetAnimationGroupBase):
     def __init__(self, parent=None):
         super().__init__(parent)
+
         self.min_v = 0
         self.max_v = 0
+        self.is_focus = False
+
         self.border_radius = 0
         self.background_color = QColor()
-
-        self.enterFlag = False
-        self.setMaximumWidth(300)
+        self.both_sides_stretching = True
 
         self.componentInit()
+        self.setMaximumWidth(300)
 
     def setParams(self,
-                  min_of_range:int,
-                  max_of_range:int,
+                  min_of_range: int,
+                  max_of_range: int,
                   background_color: QColor,
                   border_radius: int = 0,
+                  both_sides_stretching: bool = True
                   ):
         self.min_v = min_of_range
         self.max_v = max_of_range
         self.border_radius = border_radius
         self.background_color = background_color
-
+        self.both_sides_stretching = both_sides_stretching
 
     def componentInit(self):
         self.vbox = QVBoxLayout(self)
         self.vbox.addStretch()
         self.vbox.setSpacing(8)
-        self.vbox.setContentsMargins(10, 10, 10, 10)
+        self.vbox.setContentsMargins(10, 15, 10, 10)
 
     def animConfig(self):
         self.start_show_x = self.x()
@@ -119,44 +63,80 @@ class FlexibleSidebar(WidgetAnimationGroupBase):
         painter.setRenderHint(QPainter.Antialiasing)
         painter.setClipPath(path)
 
-        self.drawForeground(painter)
+        self.drawBackground(painter)
 
-    def drawForeground(self, painter: QPainter):
+    def drawBackground(self, painter: QPainter):
         painter.save()
         painter.setBrush(self.background_color)
         painter.drawRect(self.rect())
         painter.restore()
 
-    def addWidget(self, widget: QWidget):
-        self.vbox.insertWidget(0, widget)
-
-
     def onAnimParamChangeSignal(self, v: list) -> None:
         x = v[1]
         width = v[0]
-        self.setGeometry(x, self.y(), width, self.height())
+        if self.both_sides_stretching:
+            self.setGeometry(x, self.y(), width, self.height())
+        else:
+            self.setGeometry(self.x(), self.y(), width, self.height())
 
-    def enterEvent(self, event):
-        if not self.enterFlag:
-            self.enterFlag = True
-            return
-        super().enterEvent(event)
+    def addWidget(self, widget: QPushButton):
+        self.vbox.insertWidget(-1, widget)
+        widget.clicked.connect(self.onItemClicked)
+
+    def onItemClicked(self):
         for item in self.findChildren(FlexibleSidebarButton):
             if isinstance(item, FlexibleSidebarButton):
-                item.showText()
-        self.is_focus = True
-        self.animForwardRun()
+                item.is_clicked = False
+                item.update()
 
-    def leaveEvent(self, event):
-        super().leaveEvent(event)
-        for item in self.findChildren(FlexibleSidebarButton):
-            if isinstance(item, FlexibleSidebarButton):
-                item.hideText()
-        self.is_focus = False
-        self.animBackwardRun()
+        trigger = self.sender()
+        trigger.is_clicked = True
 
     def showEvent(self, event) -> None:
-        super(FlexibleSidebar, self).showEvent(event)
+        super().showEvent(event)
         self.animConfig()
 
 
+class FlexibleSidebar_Hover(FlexibleSidebarBase):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.is_focus = True
+
+    def enterEvent(self, event):
+        super().enterEvent(event)
+        if not self.is_focus:
+            self.animForwardRun()
+            self.is_focus = True
+
+    def leaveEvent(self, event):
+        super().leaveEvent(event)
+        if self.is_focus:
+            self.is_focus = False
+            self.animBackwardRun()
+
+
+class FlexibleSidebar_Click(FlexibleSidebarBase):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.is_focus = True
+
+    def componentInit(self):
+        super().componentInit()
+
+        icon = QIcon()
+        icon.addFile(":/icon_svg/icon_svg/more.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn = BaseButton(parent=self)
+        self.btn.setFixedHeight(30)
+        self.btn.setIcon(icon)
+        self.btn.setText("More")
+        self.btn.setParams(font_color=QColor(255, 255, 255), background_color=QColor(0, 89, 89))
+        self.btn.clicked.connect(self.onAnimRun)
+        self.vbox.addWidget(self.btn)
+
+    def onAnimRun(self):
+        if not self.is_focus:
+            self.animForwardRun()
+            self.is_focus = True
+        else:
+            self.is_focus = False
+            self.animBackwardRun()
