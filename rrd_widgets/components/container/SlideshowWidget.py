@@ -2,8 +2,7 @@ from PySide6.QtCore import QTimer, QPropertyAnimation, QEasingCurve, QParallelAn
     QPoint, QRegularExpression, Qt, Signal
 from PySide6.QtGui import QPixmap, QIcon, QPainterPath, QPainter, QResizeEvent
 from PySide6.QtWidgets import  QPushButton, QLabel, QWidget, QSizePolicy, QButtonGroup, QHBoxLayout
-from ...common.icon.binary_data_icon import icon_slider_show as icon
-
+from ...common import resource
 
 class PixmapLabel(QLabel):
     def __init__(self, *args, **kwargs):
@@ -219,18 +218,18 @@ class SlideShowWidget(QWidget):
             self.pushButton_l.setObjectName(u"pushButton_l")
             self.pushButton_l.setGeometry(QRect(82, 80, 36, 36))
             icon = QIcon()
-            icon.addFile(u":/icon/icon_png/\u540e\u9000 (1).png", QSize(), QIcon.Normal, QIcon.Off)
+            icon.addFile(u":/icon_svg/icon_svg/left.svg", QSize(), QIcon.Normal, QIcon.Off)
             self.pushButton_l.setIcon(icon)
-            self.pushButton_l.setIconSize(QSize(18, 18))
+            self.pushButton_l.setIconSize(QSize(20, 20))
             self.pushButton_l.clicked.connect(lambda: self.__animationStartButton(is_forward=False))
 
             self.pushButton_r = ClickedButton(self)
             self.pushButton_r.setObjectName(u"pushButton_r")
             self.pushButton_r.setGeometry(QRect(803, 80, 36, 36))
             icon1 = QIcon()
-            icon1.addFile(u":/icon/icon_png/\u524d\u8fdb (1).png", QSize(), QIcon.Normal, QIcon.Off)
+            icon1.addFile(u":/icon_svg/icon_svg/right.svg", QSize(), QIcon.Normal, QIcon.Off)
             self.pushButton_r.setIcon(icon1)
-            self.pushButton_r.setIconSize(QSize(18, 18))
+            self.pushButton_r.setIconSize(QSize(20, 20))
             self.pushButton_r.clicked.connect(lambda: self.__animationStartButton(is_forward=True))
 
             self.pushButton_l.hide()

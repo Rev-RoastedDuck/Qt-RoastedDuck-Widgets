@@ -22,9 +22,6 @@ from PySide6.QtCore import (QRect,
                             QSize, QPropertyAnimation, QTimer)
 from PySide6.QtWidgets import (QFrame, QPushButton)
 
-from ...common.icon.binary_data_icon import icon_rexpand_button_box as icon
-
-
 from rrd_widgets.components.layout.RGridLayout import RGridLayout
 
 
