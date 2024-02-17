@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QPushButton, QVBoxLayout, QBoxLayout
 
 from ..base import WidgetAnimationGroupBase
 from ..widget.Button.BaseButton import BaseButton, BaseClickedHoveringButton
-
+from ..layout.RVBoxLayout import VBoxLayoutManager
 
 class FlexibleSidebarButton(BaseClickedHoveringButton):
     def __init__(self, parent, text=None, icon=None):
@@ -41,6 +41,7 @@ class FlexibleSidebarBase(WidgetAnimationGroupBase):
         self.border_radius = border_radius
         self.background_color = background_color
         self.both_sides_stretching = both_sides_stretching
+        # self.animConfig()
 
     def componentInit(self):
         self.vbox = QVBoxLayout(self)
@@ -48,12 +49,13 @@ class FlexibleSidebarBase(WidgetAnimationGroupBase):
         self.vbox.setContentsMargins(10, 15, 10, 10)
         self.vbox.setDirection(QBoxLayout.BottomToTop)
         self.vbox.addStretch()
+        self.setLayout(self.vbox)
 
     def animConfig(self):
         self.start_show_x = self.x()
         self.start_hide_x = self.x() + (self.max_v - self.min_v) // 2
-        self.addAnimParams(min_v=self.min_v, max_v=self.max_v, time=150)
-        self.addAnimParams(min_v=self.start_hide_x, max_v=self.start_show_x, time=150)
+        self.addAnimParams(min_v=self.min_v, max_v=self.max_v, time=100)
+        self.addAnimParams(min_v=self.start_hide_x, max_v=self.start_show_x, time=100)
 
     def paintEvent(self, event) -> None:
         path = QPainterPath()
@@ -105,13 +107,13 @@ class FlexibleSidebar_Hover(FlexibleSidebarBase):
 
     def enterEvent(self, event):
         super().enterEvent(event)
-        if not self.is_focus:
+        if not self.is_focus and not self.is_running():
             self.animForwardRun()
             self.is_focus = True
 
     def leaveEvent(self, event):
         super().leaveEvent(event)
-        if self.is_focus:
+        if self.is_focus and not self.is_running():
             self.is_focus = False
             self.animBackwardRun()
 
@@ -132,16 +134,18 @@ class FlexibleSidebar_Click(FlexibleSidebarBase):
         self.btn.setText("More")
         self.btn.setParams(font_color=QColor(255, 255, 255),background_color=QColor(0,0,0,0))
         self.btn.clicked.connect(self.onAnimRun)
-        self.vbox.insertWidget(1,self.btn)
+        self.vbox.addWidget(self.btn)
+
     def addWidget(self, widget: QPushButton):
         super().addWidget(widget)
         self.btn.setFont(widget.font())
 
     def onAnimRun(self):
-        if not self.is_focus:
-            self.animForwardRun()
-            self.is_focus = True
-        else:
-            self.is_focus = False
-            self.animBackwardRun()
+        if not self.is_running():
+            if not self.is_focus:
+                self.animForwardRun()
+                self.is_focus = True
+            else:
+                self.is_focus = False
+                self.animBackwardRun()
 
