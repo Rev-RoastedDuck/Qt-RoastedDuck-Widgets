@@ -240,6 +240,7 @@ class SimpleButton_5(SimpleButtonBase):
         painter.restore()
 
     def mouseReleaseEvent(self, event):
+        super().mouseReleaseEvent(event)
         self.is_enter = True
         self.animForwardRun()
         QTimer.singleShot(self.anim_msecs+1000, lambda: self.__animFin())
@@ -300,6 +301,7 @@ class SimpleButton_6(SimpleButtonBase):
         painter.restore()
 
     def mouseReleaseEvent(self, event):
+        super().mouseReleaseEvent(event)
         self.is_enter = True
         self.animForwardRun()
         QTimer.singleShot(self.anim_msecs+1000, lambda: self.__animFin())
