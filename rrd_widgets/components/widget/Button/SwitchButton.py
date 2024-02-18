@@ -54,8 +54,8 @@ class SwitchButtonBase(QToolButton):
         self._indicatorX = x
         self.update()
 
-    def showEvent(self, event):
-        super().showEvent(event)
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
         self.animaParamsInit()
 
 
