@@ -147,10 +147,11 @@ class ComboBoxPopWidget(QWidget):
     trigger_signal = Signal(int)
     update_curr_index_signal = Signal(int)
 
-    def __init__(self, parent=None, curren_index: int = 0, item_spacing: int = 0):
+    def __init__(self, parent=None, curren_index: int = 0, item_spacing: int = 0, top_to_bottom: bool = True):
         super().__init__(parent)
 
         self.border_radius = 5
+        self.top_to_bottom = top_to_bottom
         self.is_show_status = False
         self.spacing = item_spacing
         self.items: List[ComboBoxItem] = []
@@ -194,8 +195,13 @@ class ComboBoxPopWidget(QWidget):
     def __animShow(self):
         self.anim_show = QPropertyAnimation(self, b'geometry')
         self.anim_show.setEasingCurve(QEasingCurve.OutQuad)
-        self.anim_show.setStartValue(QRect(self.pos(), QSize(self.width(), 0)))
-        self.anim_show.setEndValue(QRect(self.pos(), QSize(self.width(), self.height())))
+        if self.top_to_bottom:
+            self.anim_show.setStartValue(QRect(self.pos(), QSize(self.width(), 0)))
+            self.anim_show.setEndValue(QRect(self.pos(), QSize(self.width(), self.height())))
+        else:
+            self.anim_show.setStartValue(QRect(QPoint(self.pos().x(), self.pos().y()+self.height()), QSize(self.width(), 0)))
+            self.anim_show.setEndValue(
+                QRect(QPoint(self.pos().x(), self.pos().y()), QSize(self.width(), self.height())))
         self.anim_show.setDuration(200)
         self.anim_show.start()
 
@@ -209,10 +215,10 @@ class ComboBoxPopWidget(QWidget):
     def leaveEvent(self, event) -> None:
         self.pop_hide_signal.emit()
 
-    def showEvent(self, event: QShowEvent) -> None:
+    def show(self)->None:
         self.geometryManager.calculateCenterePositions()
-        QTimer.singleShot(1, lambda: self.__animShow())
-        super().showEvent(event)
+        self.__animShow()
+        super().show()
 
     def hide(self) -> None:
         super().hide()
@@ -241,10 +247,15 @@ class ComboBoxWidget(QWidget):
         self.topLevelWidget().installEventFilter(self)
 
     def setParams(self, border_radius: int = 5,
+                  font_color: QColor = QColor(0, 0, 0),
                   background_color: QColor = QColor(255, 255, 255)
                   ):
+        self.font_color = font_color
         self.border_radius = border_radius
         self.background_color = background_color
+
+        self.editer.setStyleSheet(f"background-color:{background_color.name()};")
+        self.setStyleSheet(f"color:{font_color.name()}")
 
     def setItemParams(self, border_radius: int = 3,
                       item_spacing=3,
@@ -284,21 +295,29 @@ class ComboBoxWidget(QWidget):
         self.hbox.addWidget(self.button)
 
     def __getItemSize(self):
-        return QSize(self.width() - 8, self.item_height)
+        return QSize(self.width() - 6, self.item_height)
 
     def __pop_widget_show(self):
         if self.pop_widget or not len(self.items):
             return
+
         pos = self.mapTo(self.topLevelWidget(), QPoint(0, 0))
 
         x = pos.x()
         w = self.width()
+        top_to_bottom = True
         y = pos.y() + self.height() + 5
         h = len(self.items) * (self.__getItemSize().height() + self.item_spacing) + self.item_spacing
 
-        self.pop_widget = ComboBoxPopWidget(self.topLevelWidget(), self._curr_index, self.item_spacing)
+        if not self.mapTo(self.topLevelWidget(), QPoint(0, 0)).y() + h < self.topLevelWidget().height():
+            y = pos.y() - h - 5
+            top_to_bottom = False
+
+        self.pop_widget = ComboBoxPopWidget(self.topLevelWidget(), self._curr_index, self.item_spacing, top_to_bottom)
+        self.pop_widget.setFont(self.font())
         self.pop_widget.setGeometry(x, y, w, h)
         self.__addItemsToPopWidget(self.pop_widget)
+        self.pop_widget.color_background = self.background_color
         self.pop_widget.pop_hide_signal.connect(self.__popWidgetDel)
         self.pop_widget.trigger_signal.connect(self.__onTriggerSignal)
 
@@ -342,7 +361,6 @@ class ComboBoxWidget(QWidget):
 
         self.__drawBackground(painter)
 
-
     def itemText(self, index: int) -> str:
         return self.items[index]["text"]
 
@@ -372,8 +390,8 @@ class ComboBoxWidget(QWidget):
         super(ComboBoxWidget, self).showEvent(event)
 
         h = self.height()
-        self.button.resize(h+2, h)
-        self.editer.resize(self.width()-h-2, h)
+        self.button.resize(h + 2, h)
+        self.editer.resize(self.width() - h - 2, h)
 
     def setFont(self, font: QFont) -> None:
         self.editer.setFont(font)
@@ -388,12 +406,17 @@ class ComboBoxWidget(QWidget):
     def curr_index(self):
         return self._curr_index
 
-    def eventFilter(self, obj, event:QEvent):
+    def eventFilter(self, obj, event: QEvent):
         if self.pop_widget:
             if (not obj == self.pop_widget) and event.type() == QEvent.MouseButtonRelease:
                 self.pop_widget.pop_hide_signal.emit()
         return super().eventFilter(obj, event)
 
-    def setCurrentIndex(self,index:int):
+    def setCurrentIndex(self, index: int):
         self.__onTriggerSignal(index)
 
+    def setCurrentText(self, text: str):
+        for index in range(len(self.items)):
+            if self.items[index]["text"] == text:
+                self.__onTriggerSignal(index)
+                break
