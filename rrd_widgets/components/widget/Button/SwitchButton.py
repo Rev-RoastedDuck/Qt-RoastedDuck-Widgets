@@ -24,6 +24,7 @@ class SwitchButtonBase(QToolButton):
         pass
 
     def toggle(self):
+        self.setChecked(not self.isChecked())
         if self.isChecked():
             self.slideAni.setEndValue(self.end)
         else:
@@ -32,7 +33,11 @@ class SwitchButtonBase(QToolButton):
 
     def mouseReleaseEvent(self, event) -> None:
         super().mouseReleaseEvent(event)
-        self.toggle()
+        if self.isChecked():
+            self.slideAni.setEndValue(self.end)
+        else:
+            self.slideAni.setEndValue(self.start)
+        self.slideAni.start()
 
     def paintEvent(self, event):
         painter = QPainter(self)
