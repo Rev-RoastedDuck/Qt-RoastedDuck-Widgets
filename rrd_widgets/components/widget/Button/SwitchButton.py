@@ -1,6 +1,7 @@
 from PySide6.QtGui import QColor, QPainter, QPen
 from PySide6.QtWidgets import QToolButton, QWidget
-from PySide6.QtCore import Qt, Property, QPoint, QPropertyAnimation, QRect
+from PySide6.QtCore import Qt, Property, QPoint, QPropertyAnimation, QRect, Signal
+
 
 class SwitchButtonBase(QToolButton):
     def __init__(self, parent: QWidget = None):
@@ -23,15 +24,15 @@ class SwitchButtonBase(QToolButton):
         pass
 
     def toggle(self):
-        self.setChecked(not self.isChecked())
-
-    def mouseReleaseEvent(self, event) -> None:
-        super().mouseReleaseEvent(event)
         if self.isChecked():
             self.slideAni.setEndValue(self.end)
         else:
             self.slideAni.setEndValue(self.start)
         self.slideAni.start()
+
+    def mouseReleaseEvent(self, event) -> None:
+        super().mouseReleaseEvent(event)
+        self.toggle()
 
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -60,15 +61,23 @@ class SwitchButtonBase(QToolButton):
 
 
 class SwitchButton_1(SwitchButtonBase):
+    def __init__(self, parent: QWidget = None):
+        super().__init__(parent)
+
+        self.indicator_color = QColor()
+        self.background_color = QColor()
+        self.checked_background_color = QColor()
+
     def setParams(self,
                   indicator_color: QColor = QColor(255, 255, 255),
                   background_color: QColor = QColor(188, 188, 188),
                   checked_background_color: QColor = QColor(0, 89, 89),
-                  checked_indicator_color: QColor = None
+                  checked_indicator_color: QColor = QColor(255,255,255)
                   ):
         self.indicator_color = indicator_color
         self.background_color = background_color
         self.checked_background_color = checked_background_color
+        self.checked_indicator_color = checked_indicator_color
 
     def paintBackground(self, painter: QPainter):
         painter.save()
@@ -91,7 +100,12 @@ class SwitchButton_1(SwitchButtonBase):
 
         painter.translate(0, self.height() // 2)
         painter.setPen(Qt.NoPen)
-        painter.setBrush(self.indicator_color)
+
+        if self.isChecked():
+            painter.setBrush(self.checked_indicator_color)
+        else:
+            painter.setBrush(self.indicator_color)
+
         painter.drawEllipse(point, r, r)
         painter.restore()
 
