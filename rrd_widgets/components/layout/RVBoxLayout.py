@@ -36,6 +36,7 @@ class VBoxLayoutManager():
         for widget in self.widgets:
             widget.move(x, y)
             y += widget.height() + self.spacing
+        self.parent.resize(self.parent.width(),y)
 
     def calculateCenterePositions(self):
         """ 居中显示 """
@@ -44,6 +45,7 @@ class VBoxLayoutManager():
             x = (self.parent.width() - widget.width()) // 2
             widget.move(x, y)
             y += widget.height() + self.spacing
+        self.parent.resize(self.parent.width(),y)
 
     def getContentsMargins(self):
         return self.margins
