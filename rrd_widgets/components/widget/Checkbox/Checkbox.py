@@ -124,6 +124,9 @@ class CheckboxWidget(QWidget):
 
     def setText(self, text: str):
         self.label.setText(text)
+        
+    def text(self):
+        return self.label.text()
 
     def showEvent(self, event) -> None:
         super(CheckboxWidget, self).showEvent(event)
