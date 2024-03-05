@@ -136,7 +136,7 @@
 2. 方法📃
    - RInput.setParams(): 配置必要的参数
    - RInput.setFontToEditer(): 配置输入框的字体样式
-   - RInput.setTextToPlaceholder(): 配置提示框的字体样式
+   - ~~RInput.setTextToPlaceholder()~~ RInput.setPlaceholderText(): 配置提示框的字体样式
 3. 在配置组件高度和输入框高度的时候，记得给提示框留下充足的显示空间❗
 
 
