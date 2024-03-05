@@ -21,7 +21,7 @@ class ExpandLineEdit(QWidget):
     def setParams(self,editer_height:int):
         self.editer_show_h = editer_height
 
-    def setTextToPlaceholder(self, text: str):
+    def setPlaceholderText(self, text: str):
         self.placeholder.setText(text)
 
     def setFontToEditer(self, font):
