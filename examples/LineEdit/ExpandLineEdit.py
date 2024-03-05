@@ -22,7 +22,7 @@ if __name__ == '__main__':
     input_1.setFontToEditer(font)
 
     font.setPointSize(10)
-    input_1.setFontToPlaceholder(font)
+    input_1.setPlaceholderText(font)
     input_1.setTextToPlaceholder("请输入内容")
 
 
