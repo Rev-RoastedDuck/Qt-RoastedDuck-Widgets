@@ -414,9 +414,18 @@ class ComboBoxWidget(QWidget):
 
     def setCurrentIndex(self, index: int):
         self.__onTriggerSignal(index)
-
+        
     def setCurrentText(self, text: str):
         for index in range(len(self.items)):
             if self.items[index]["text"] == text:
                 self.__onTriggerSignal(index)
                 break
+                
+    def clearAll(self):
+        self.count: int = 0
+        self._curr_index: int = 0
+        self._curr_text: str = ""
+        self.placeholder_text: str = ""
+        self.items: List[ComboBoxItem] = []
+
+        self.editer.clear()
