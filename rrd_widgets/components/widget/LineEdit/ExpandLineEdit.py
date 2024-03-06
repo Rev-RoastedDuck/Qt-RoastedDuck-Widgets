@@ -37,6 +37,9 @@ class ExpandLineEdit(QWidget):
     def setFontToPlaceholder(self, font):
         self.placeholder.setFont(font)
 
+    def setText(self,text:str):
+        self.editer.setText(text)
+
     def __getStyleSheetParams(self):
         """ 提取样式 """
         ExpInput_property: dict = get_property(self)["ExpInput"]
@@ -113,3 +116,6 @@ class ExpandLineEdit(QWidget):
         self.__animParamsUpdate()
         self.__animInit()
         self.__updateComponentPos()
+
+    def text(self):
+        return self.editer.text()
