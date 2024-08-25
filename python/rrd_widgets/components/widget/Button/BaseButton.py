@@ -75,6 +75,7 @@ class BaseButton(BaseParamsButton):
         painter.save()
         painter.setBrush(self.background_color)
         painter.drawRect(self.rect())
+        painter.restore()
 
 
 class BaseHoveringButton(BaseButton):
