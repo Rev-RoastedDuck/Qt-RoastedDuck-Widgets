@@ -3,17 +3,18 @@ from PySide6.QtGui import QColor, QCursor, QPainter, QPen, QPainterPath
 
 from ...base import ButtonAnimationBase
 
+
 class RWavyButtonBase(ButtonAnimationBase):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.border_radius:int = 0
-        self.full_color:QColor = QColor()
-        self.font_color:QColor = QColor()
+        self.border_radius: int = 0
+        self.full_color: QColor = QColor()
+        self.font_color: QColor = QColor()
 
-    def setParams(self,*args):
+    def setParams(self, *args):
         pass
 
-    def drawText(self,painter:QPainter):
+    def drawText(self, painter: QPainter):
         painter.save()
         painter.setFont(self.font())
         painter.setPen(QColor(self.font_color))
@@ -22,18 +23,18 @@ class RWavyButtonBase(ButtonAnimationBase):
             painter.drawText(self.rect(), Qt.AlignCenter, self.text())
         painter.restore()
 
-    def drawBorder(self,painter:QPainter):
+    def drawBorder(self, painter: QPainter):
         painter.save()
         pen = QPen()
         pen.setWidth(2)
         pen.setColor(self.full_color)
 
         painter.setPen(pen)
-        painter.drawRoundedRect(self.rect(),self.border_radius,self.border_radius)
+        painter.drawRoundedRect(self.rect(), self.border_radius, self.border_radius)
         painter.restore()
 
     def paintEvent(self, event):
-        super().paintEvent(event)
+        # super().paintEvent(event)
 
         painter = QPainter(self)
         painter.setPen(Qt.NoPen)
@@ -50,13 +51,14 @@ class RWavyButtonBase(ButtonAnimationBase):
     def drawForeground(self, painter: QPainter):
         pass
 
+
 class RWavyButton(RWavyButtonBase):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.mouse_clicked_pos = None
 
     def setParams(self,
-                  font_color:QColor,
+                  font_color: QColor,
                   full_color: QColor,
                   border_radius: int = 5
                   ):
@@ -72,7 +74,7 @@ class RWavyButton(RWavyButtonBase):
         max = (self.width() ** 2 + self.height() ** 2) ** 0.5
         return min, max
 
-    def drawForeground(self,painter:QPainter):
+    def drawForeground(self, painter: QPainter):
         painter.save()
 
         if self.mouse_clicked_pos is None or self.is_leave and self.radius < 2:
