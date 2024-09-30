@@ -19,31 +19,31 @@
     - [简易按钮-SimpleButton](#简易按钮-SimpleButton)
     - [开关按钮-SwitchButton](#切换按钮-SwitchButton)
     - [微光按钮-ShimmerButton](#微光按钮-ShimmerButton)
-   
+  
   - **输入框-LineEdit**
     - [伸缩输入框-ExpandLineEdit](#伸缩输入框-ExpandLineEdit)
     - [简易输入框-SimpleLineEdit](#简易输入框-SimpleLineEdit)
   
   - **组合框-ComboBox**
     - [组合框-ComboBox](#组合框-ComboBox)
-      
+    
   - **复选框-CheckBox**
     - [复选框-CheckBox](#复选框-CheckBox)
 
-   
+  
   - **容器-Container**
     - [发散按钮容器-RExpandButtonBox](#发散按钮容器-RExpandButtonBox)
     - [轮播图组件-SlideShowWidget](#轮播图组件-SlideShowWidget)
     - [伸缩侧边栏-FlexibleSidebar](#伸缩侧边栏-FlexibleSidebar)
     - [流光展示卡片-DynamicBorderWidget](#流光展示卡片-DynamicBorderWidget)
     - [卡片列表-CardListView](#卡片列表-CardListView)
-   
+  
   - **滑块组件-Slider**
     - [滑块-Slider](#滑块-Slider)
-   
+  
   - **通知组件-Notification Components**
     - [提示弹窗-TipsWidget](#提示弹窗-TipsWidget)
- 
+
   - **仪表组件-Instrumentation Components**
     - [速度仪表-Speedometer](#速度仪表-Speedometer)
   
@@ -99,7 +99,7 @@
    - second_background_color：动画后，控件的背景颜色
 3. 方法📃
    - setParams();配置控件的样式参数
-  
+
 ## 开关按钮-SwitchButton
 ### 效果:
 ![SwitchButton](./Demo/SwitchButton.gif)
@@ -124,7 +124,7 @@
    - shimmer_blur_radius:模糊程度
    - timer_interval:动画时间间隔
    
-  
+
 # 输入框-LineEdit
 
 ## 伸缩输入框-ExpandLineEdit
