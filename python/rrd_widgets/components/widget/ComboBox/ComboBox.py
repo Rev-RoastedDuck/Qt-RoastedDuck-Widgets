@@ -270,11 +270,11 @@ class ComboBoxWidget(QWidget):
         self.item_height = item_height
 
     def __ui_init(self):
-        shadow = QGraphicsDropShadowEffect(self)
-        shadow.setOffset(2, 2)
-        shadow.setBlurRadius(10)
-        shadow.setColor(QColor(20, 20, 20, 30))
-        self.setGraphicsEffect(shadow)
+        # shadow = QGraphicsDropShadowEffect(self)
+        # shadow.setOffset(2, 2)
+        # shadow.setBlurRadius(10)
+        # shadow.setColor(QColor(20, 20, 20, 30))
+        # self.setGraphicsEffect(shadow)
 
         icon = QIcon()
         icon.addFile(":/icon_svg/icon_svg/under.svg", QSize(), QIcon.Normal, QIcon.Off)
