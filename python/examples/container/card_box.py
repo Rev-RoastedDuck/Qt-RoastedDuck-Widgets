@@ -6,8 +6,8 @@ from PySide6.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, Q
 
 from rrd_widgets.components.container.card_box import CardBoxDeletable
 
-import icon
-from CardBoxUI import Ui_Form
+from res import icon
+from res.card_box_ui import Ui_Form
 
 
 class CardWidget(QWidget):
@@ -110,6 +110,9 @@ class CardWidget(QWidget):
 class CardBoxWidget(CardBoxDeletable):
     def __init__(self, parent=None):
         super().__init__(parent=parent)
+
+        self.setWindowTitle("rrd-widget")
+
         font = QFont()
         font.setFamily("Microsoft YaHei")
         font.setPointSize(18)
