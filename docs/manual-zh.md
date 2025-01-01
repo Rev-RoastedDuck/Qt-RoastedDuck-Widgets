@@ -201,7 +201,7 @@
 
 ## 发散按钮容器
 ### 效果:
-![发散按钮容器](../res/demo/ExpandBox.gif)
+![发散按钮容器](../res/demo/demo_4.gif)
 ### 说明:
 1. 参数📃
    - RExpandBox.locatorBoxSize: 定位组件的尺寸
