@@ -45,6 +45,9 @@
 #### 滑块条
 <img src="res/demo/slider-bar.gif" style="border-radius: 10px;width: 30rem">
 
+#### 幻灯片
+<img src="res/demo/SlideshowWidget.gif" style="border-radius: 10px;width: 30rem">
+
 ## 快速开始
 1. 将 `rrd_widget` 放置于 Python 的 `Lib` 目录下：
    ```

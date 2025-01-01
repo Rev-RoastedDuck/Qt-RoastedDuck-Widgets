@@ -22,7 +22,7 @@ if __name__ == "__main__":
     for pixmap in pixmapList:
         w.addPixmap(pixmap)
     # 设置SlideshowWidget的位置和大小
-    w.setGeometry((m.width() - 700) // 2, (m.height() - 300) // 2, 700, 260)
+    w.setGeometry((m.width() - 700) // 2, (m.height() - 360) // 2, 700, 260)
 
     m.show()
     app.exec()

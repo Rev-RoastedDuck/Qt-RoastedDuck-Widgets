@@ -45,6 +45,8 @@
 #### slider-bar
 <img src="res/demo/slider-bar.gif" style="border-radius: 10px;width: 30rem">
 
+#### slider-show
+<img src="res/demo/SlideshowWidget.gif" style="border-radius: 10px;width: 30rem">
 
 
 ## Quick start
