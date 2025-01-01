@@ -140,7 +140,7 @@ class FlexibleSidebar_Click(FlexibleSidebarBase):
         super().componentInit()
 
         icon = QIcon()
-        icon.addFile(":/icon_svg/icon_svg/more.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(":/icon_svg/icon_svg/more-2.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btn = BaseButton(parent=self)
         self.btn.setFixedHeight(30)
         self.btn.setIcon(icon)

@@ -19,5 +19,7 @@
     <file>icon_svg/under.svg</file>
     <file>icon_svg/user.svg</file>
     <file>icon_svg/verify.svg</file>
+    <file>icon_svg/more-2.svg</file>
+    <file>icon_svg/share-2.svg</file>
   </qresource>
 </RCC>
