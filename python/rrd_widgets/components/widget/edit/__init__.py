@@ -16,8 +16,6 @@ Information:
 :copyright: (c) 2023 by Rev-RoastedDuck.
 :license: GPLv3, see LICENSE for more details.
 """
-from .dynamic_border_box import DynamicBorderWidget
-from .flexible_sidebar import FlexibleSidebarButton,FlexibleSidebar_Click,FlexibleSidebar_Hover
-from .expand_button_box import RExpandButtonBox,RButton
-from .slideshow_widget import SlideShowWidget
-from .card_box import CardBoxDeletable
+
+from .expand_line_edit import ExpandLineEdit
+from .simple_line_edit import SimpleLineEdit_1,SimpleLineEdit_2

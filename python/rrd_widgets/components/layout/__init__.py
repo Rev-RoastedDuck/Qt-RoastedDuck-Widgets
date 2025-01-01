@@ -16,4 +16,4 @@ Information:
 :copyright: (c) 2023 by Rev-RoastedDuck.
 :license: GPLv3, see LICENSE for more details.
 """
-from .RGridLayout import RGridLayout
+from .grid_layout import RGridLayout

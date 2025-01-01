@@ -17,9 +17,11 @@ Information:
 :license: GPLv3, see LICENSE for more details.
 """
 
-from .Button import *
-from .LineEdit import *
-from .Slider import *
-from .NotificationWidget import *
+from .button import *
+from .edit import *
+from .slider import *
+from .checkbox import *
+from .combo_box import *
+from .notification_widget import *
 
 
