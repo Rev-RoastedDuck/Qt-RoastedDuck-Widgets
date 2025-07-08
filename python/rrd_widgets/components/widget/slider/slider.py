@@ -1,6 +1,7 @@
-from PySide6.QtWidgets import  QSlider
+from PySide6.QtWidgets import QSlider
 from PySide6.QtGui import QPainter, QColor, QPaintEvent, QPen, QMouseEvent, QLinearGradient
 from PySide6.QtCore import Qt, QRect, QPoint, QSize
+
 
 class Silder(QSlider):
     def __init__(self, orientation: Qt.Orientation, parent=None, ):
@@ -10,6 +11,7 @@ class Silder(QSlider):
         self.setMouseTracking(True)
         self.__paramsConfig()
         self.__pressedPos = 0
+        self.__gradient = None
 
     def __paramsConfig(self):
         # 颜色
@@ -31,7 +33,7 @@ class Silder(QSlider):
                   color_groove_add: QColor = QColor(231, 227, 228),
                   color_handle_inside: QColor = QColor(148, 59, 142),
                   color_handle_outside: QColor = QColor(255, 255, 255),
-                  width_line: int = 6, radius_handle: int = 10,padding:int = 15):
+                  width_line: int = 6, radius_handle: int = 10, padding: int = 15):
         # 颜色
         self.__color_groove_sub = color_groove_sub
         self.__color_groove_add = color_groove_add
@@ -55,19 +57,23 @@ class Silder(QSlider):
         self.__drawGroove(painter)
         self.__drawHandle(painter)
 
-    def __createGradient(self):
+    def setGradient(self,
+                    start_color: QColor = QColor("#943b8e"),
+                    midd_color: QColor = QColor("#ca3fa1"),
+                    end_color: QColor = QColor(0, 89, 89)):
         if self.orientation() == Qt.Orientation.Horizontal:
-            gradient = QLinearGradient(10, 10, self.width() - 10, 10)
-            gradient.setColorAt(0, QColor("#943b8e"))
-            gradient.setColorAt(0.5, QColor("#ca3fa1"))
-            gradient.setColorAt(1, QColor(0,89,89))
+            self.__gradient = QLinearGradient(10, 10, self.width() - 10, 10)
+            self.__gradient.setColorAt(0, start_color)
+            self.__gradient.setColorAt(0.5, midd_color)
+            self.__gradient.setColorAt(1, end_color)
         else:
-            gradient = QLinearGradient(10, 10, 10, self.height() - 10)
-            gradient.setColorAt(0, QColor("#943b8e"))
-            gradient.setColorAt(0.5, QColor("#ca3fa1"))
-            gradient.setColorAt(1, QColor("#ff42b3"))
+            self.__gradient = QLinearGradient(10, 10, 10, self.height() - 10)
+            self.__gradient.setColorAt(0, start_color)
+            self.__gradient.setColorAt(0.5, midd_color)
+            self.__gradient.setColorAt(1, end_color)
 
-        return gradient
+    def __createGradient(self):
+        return self.__gradient
 
     def __drawGroove(self, painter: QPainter):
         painter.save()
@@ -90,7 +96,10 @@ class Silder(QSlider):
                     self.value() - self.minimum()) + self.__padding)
             xy = xy if xy <= args - self.__padding else args - self.__padding
 
-            painter.setBrush(self.__createGradient())
+            if self.__gradient is None:
+                painter.setBrush(self.__color_groove_sub)
+            else:
+                painter.setBrush(self.__gradient)
 
             if self.orientation() == Qt.Orientation.Horizontal:
                 painter.drawRoundedRect(
@@ -125,6 +134,18 @@ class Silder(QSlider):
 
         painter.restore()
 
+    def __drawText(self, painter: QPainter):
+        painter.save()
+        painter.restore()
+
+    def getGrooveRect(self):
+        if self.orientation() == Qt.Orientation.Horizontal:
+            return QRect(self.__padding, self.__padding - self.__width_line // 2, self.width() - self.__padding * 2,
+                         self.__width_line)
+        else:
+            return QRect(self.__padding - self.__width_line // 2, self.__padding, self.__width_line,
+                         self.height() - self.__padding * 2)
+
     def mousePressEvent(self, e: QMouseEvent):
         self.__is_pressed_handle = True
         self.__pressedPos = e.position()
@@ -134,7 +155,7 @@ class Silder(QSlider):
         # mouseMoveEvent不会调用update()
         if self.__is_pressed_handle:
             self.setValue(self.__getCurrentValue(e.position()))
-            print(self.value())
+            # print(self.value())
 
         handle_rect = self.__getHandleRect()
         if handle_rect.contains(e.position().toPoint()):
@@ -176,4 +197,3 @@ class Silder(QSlider):
         size = QSize(self.__radius_handle * 2, self.__radius_handle * 2)
 
         return QRect(pos, size).adjusted(-10, -10, 10, 10)
-

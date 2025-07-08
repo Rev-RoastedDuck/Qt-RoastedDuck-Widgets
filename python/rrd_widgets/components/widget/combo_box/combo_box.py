@@ -253,9 +253,10 @@ class ComboBoxWidget(QWidget):
         self.border_radius = border_radius
         self.background_color = background_color
 
-        self.editer.setParams(anim_start_color=QColor(255, 255, 255),
-                              anim_finish_color=QColor(0, 255, 255),
-                              font_color=QColor(10, 10, 10))
+        self.editer.setParams(anim_start_color=background_color,
+                              anim_finish_color=background_color,
+                              font_color=font_color,
+                              background_color=background_color)
         self.setStyleSheet(f"color:{font_color.name()}")
 
     def setItemParams(self, border_radius: int = 3,

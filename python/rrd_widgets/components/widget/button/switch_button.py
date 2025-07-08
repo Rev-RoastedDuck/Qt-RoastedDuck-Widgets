@@ -64,6 +64,16 @@ class SwitchButtonBase(QToolButton):
         super().resizeEvent(event)
         self.animaParamsInit()
 
+    def toggle2NotChecked(self):
+        self._indicatorX = self.start
+        self.setChecked(False)
+        self.update()
+
+    def toggle2Checked(self):
+        self._indicatorX = self.end
+        self.setChecked(True)
+        self.update()
+
 
 class SwitchButton_1(SwitchButtonBase):
     def __init__(self, parent: QWidget = None):
@@ -129,11 +139,12 @@ class SwitchButton_2(SwitchButtonBase):
 
     def paintBackground(self, painter: QPainter):
         painter.save()
-        r = self.height() // 2
-        rect = QRect(1, 1, self.width() - 2, self.height() - 2)
+        pen_width = 2
+        r = (self.height() - 2 * pen_width) // 2
+        rect = QRect(pen_width, pen_width, self.width() - 2 * pen_width, self.height() - 2 * pen_width)
 
         pen = QPen()
-        pen.setWidth(3)
+        pen.setWidth(pen_width)
         if self.isChecked():
             pen.setColor(self.checked_background_color)
             painter.setPen(pen)
@@ -192,7 +203,7 @@ class SwitchButton_3(SwitchButtonBase):
 
     def paintIndicator(self, painter: QPainter):
         painter.save()
-        r = (self.height() - self.height() // 3) // 2 + self.height() // 10
+        r = (self.height() - self.height() // 3) // 2 + self.height() // 9
         point = QPoint(int(self._indicatorX), 0)
 
         painter.translate(0, self.height() // 2)

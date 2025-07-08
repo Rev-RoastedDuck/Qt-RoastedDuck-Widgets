@@ -20,7 +20,7 @@ if __name__ == "__main__":
     c.setGeometry(80, 80, 160, 30)
     c.addItems(["篮球🏀", "唱歌🎤", "跳舞💞", "Rap🎶"])
 
-    c.setItemParams(color_font=QColor(0, 0, 0),
+    c.setItemParams(color_font=QColor(10, 10, 10),
                     border_radius=5,
                     color_hover=QColor(0, 0, 0, 35),
                     color_background=QColor(255, 255, 255),
@@ -30,6 +30,7 @@ if __name__ == "__main__":
                     )
 
     c.setParams(border_radius=5,
+                font_color=QColor(10, 10, 10),
                 background_color=QColor(255, 255, 255)
                 )
     c.setCurrentIndex(1)

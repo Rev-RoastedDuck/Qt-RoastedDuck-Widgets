@@ -1,4 +1,4 @@
-from PySide6.QtCore import QRect, Qt, QEvent
+from PySide6.QtCore import QRect, Qt, QEvent,QSize
 from PySide6.QtGui import QColor, QPainter, QPainterPath, QLinearGradient, QPixmap, QPen
 from PySide6.QtWidgets import QPushButton
 
@@ -17,26 +17,31 @@ class BaseSignalButton(QPushButton):
             if event.type() == QEvent.HoverLeave:
                 self.is_hovering = False
             if event.type() == QEvent.MouseButtonRelease:
-                self.is_clicked = True
-
+                if self.click_toggle_enabled:
+                    self.is_clicked = not self.is_clicked
+                else:
+                    self.is_clicked = True
         return super().eventFilter(obj, event)
 
 
 class BaseParamsButton(BaseSignalButton):
     def __init__(self, parent):
         super().__init__(parent=parent)
-        self.font_color = QColor()
+        self.border_radius = 0
         self.border_color = QColor()
         self.background_color = QColor()
+
+        self.icon_flag = Qt.AlignLeft
+
+        self.font_color = QColor()
         self.text_padding = (0, 0, 0, 0)  # top right botton left
         self.text_flag = Qt.AlignLeft | Qt.AlignVCenter
-        self.border_radius = 0
 
     def setParams(self,
                   font_color: QColor = QColor(),
-                  border_color: QColor = QColor(),
                   background_color: QColor = QColor(),
                   border_radius: int = 0,
+                  border_color: QColor = QColor(),
                   text_padding: tuple = (0, 0, 0, 0),
                   text_flag: Qt.AlignmentFlag = Qt.AlignLeft | Qt.AlignVCenter,
                   *args
@@ -49,6 +54,10 @@ class BaseParamsButton(BaseSignalButton):
         self.border_radius = border_radius
         self.background_color = background_color
 
+    def setIconParams(self,size:QSize = QSize(16,16),
+                      flag:Qt.AlignmentFlag = Qt.AlignLeft):
+        self.icon_flag = flag
+        self.setIconSize(size)
 
 class BaseButton(BaseParamsButton):
     def paintEvent(self, event) -> None:
@@ -67,8 +76,14 @@ class BaseButton(BaseParamsButton):
     def drawIcon(self, painter: QPainter):
         painter.save()
         if self.icon():
-            pixmap = self.icon().pixmap(self.height() * 0.7)
-            painter.drawPixmap(self.height() * 0.15, self.height() * 0.15, pixmap)
+            pixmap = self.icon().pixmap(self.iconSize())
+            padding = self.height() * 0.15
+            if self.icon_flag == Qt.AlignRight:
+                painter.drawPixmap(self.width() - padding - pixmap.width(), padding, pixmap)
+            else:
+                painter.drawPixmap(padding, padding, pixmap)
+
+
         painter.restore()
 
     def drawText(self, painter: QPainter):
@@ -78,9 +93,20 @@ class BaseButton(BaseParamsButton):
             painter.setPen(QColor(self.font_color))
             if self.icon():
                 self.text_flag = Qt.AlignLeft | Qt.AlignVCenter
-                painter.drawText(self.rect().adjusted(self.height(), 0, 0, -2), self.text_flag, self.text())
+                if self.icon_flag == Qt.AlignRight:
+                    painter.drawText(self.rect().adjusted(self.text_padding[3],
+                                                          self.text_padding[0],
+                                                          self.width() - self.height() - self.text_padding[1],
+                                                          -2 - self.text_padding[2]),
+                                                          self.text_flag, self.text())
+                else:
+                    painter.drawText(self.rect().adjusted(self.height() + self.text_padding[3],
+                                                          self.text_padding[0],
+                                                          -self.text_padding[1],
+                                                          -2 - self.text_padding[2]),
+                                                          self.text_flag, self.text())
             else:
-                self.text_flag = Qt.AlignCenter
+                self.text_flag = Qt.AlignVCenter
                 painter.drawText(self.rect().adjusted(5+self.text_padding[3],
                                                       5+self.text_padding[0],
                                                       -5-self.text_padding[1],
@@ -91,6 +117,7 @@ class BaseButton(BaseParamsButton):
         painter.save()
         painter.setBrush(self.background_color)
         painter.drawRect(self.rect())
+        painter.restore()
 
 
 class BaseHoveringButton(BaseButton):
@@ -107,6 +134,7 @@ class BaseHoveringButton(BaseButton):
                           border_radius=border_radius, text_flag=text_flag)
         self.hovering_color = hovering_color
         self.text_padding = text_padding
+
 
     def drawBackground(self, painter: QPainter):
         super().drawBackground(painter)
@@ -126,7 +154,7 @@ class BaseClickedButton(BaseButton):
         if self.is_clicked:
             pen = QPen()
             pen.setColor(self.border_color)
-            pen.setWidth(4)
+            pen.setWidth(3)
             painter.setPen(pen)
             painter.drawLine(0, self.border_radius, 0, self.height() - self.border_radius)
 

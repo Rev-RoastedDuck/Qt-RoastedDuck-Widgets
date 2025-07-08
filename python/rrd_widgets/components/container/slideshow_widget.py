@@ -7,6 +7,7 @@ from ...common import resource
 class PixmapLabel(QLabel):
     def __init__(self, *args, **kwargs):
         super(PixmapLabel, self).__init__(*args, **kwargs)
+        self.border_radius = 0
         self.pixmap_backup = None
 
 

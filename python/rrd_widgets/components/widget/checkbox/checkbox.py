@@ -1,4 +1,4 @@
-from PySide6.QtCore import Qt, Signal
+from PySide6.QtCore import Qt, Signal, QRect
 from PySide6.QtGui import QColor, QPainterPath, QPainter, QBrush, QPen
 from PySide6.QtWidgets import QWidget, QGraphicsDropShadowEffect, QPushButton, QHBoxLayout, QLabel
 
@@ -8,6 +8,7 @@ from ....common.icon.rendered_icon.rendered_icon import drawHook
 class CheckBoxButton(QPushButton):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.box_width = None
         self.border_width = 1
         self.border_color = QColor(208, 208, 208)
         self.border_radius = 5
@@ -15,12 +16,13 @@ class CheckBoxButton(QPushButton):
         self.is_clicked = False
         self.setStyleSheet("background-color: transparent;")
 
-    def setParams(self, border_color: QColor = QColor(208, 208, 208), border_width: int = 1, border_radius: int = 5,
+    def setParams(self, box_width:int = 0,border_color: QColor = QColor(208, 208, 208), border_width: int = 1, border_radius: int = 5,
                   icon_color: QColor = QColor(0, 129, 140)):
         self.border_color = border_color
         self.border_width = border_width
         self.border_radius = border_radius
         self.icon_color = icon_color
+        self.box_width = box_width
 
     def paintEvent(self, event):
         super().paintEvent(event)
@@ -32,7 +34,11 @@ class CheckBoxButton(QPushButton):
         path.addRoundedRect(self.rect(), self.border_radius, self.border_radius)
 
         painter.setClipPath(path)
-        painter.drawRoundedRect(self.rect(), self.border_radius, self.border_radius)
+        if not self.box_width:
+            painter.drawRoundedRect(self.rect(), self.border_radius, self.border_radius)
+        else:
+            diff = (self.width() - self.box_width ) // 2
+            painter.drawRoundedRect(QRect(diff, diff, self.box_width,self.box_width), self.border_radius, self.border_radius)
 
         if self.is_clicked:
             self.__drawBackground(painter)
@@ -54,7 +60,7 @@ class CheckboxLabel(QLabel):
 class CheckboxWidget(QWidget):
     clicked = Signal()
 
-    def __init__(self, parent=None):
+    def __init__(self, parent=None,set_shadow:bool = True):
         super().__init__(parent)
         self.border_width = 2
         self.border_radius = 5
@@ -62,12 +68,16 @@ class CheckboxWidget(QWidget):
         self.background_color = QColor(255, 255, 255)
 
         self.__ui_init()
-        self.__setShadow()
 
-    def setParams(self, border_radius: int = 5, background_color: QColor = QColor(255, 255, 255),
-                  font_color: QColor = QColor(0, 0, 0), border_color: QColor = QColor(255, 255, 255, 0),
-                  border_width: int = 2
+        if set_shadow:
+            self.__setShadow()
 
+    def setParams(self,
+                  font_color: QColor = QColor(0, 0, 0),
+                  background_color: QColor = QColor(255, 255, 255),
+                  border_width: int = 2,
+                  border_radius: int = 5,
+                  border_color: QColor = QColor(255, 255, 255, 0)
                   ):
         self.border_radius = border_radius
         self.background_color = background_color
@@ -75,9 +85,12 @@ class CheckboxWidget(QWidget):
         self.border_width = border_width
         self.setStyleSheet(f"QLabel{{color:{font_color.name()}}}")
 
-    def setBoxParmas(self, border_color: QColor = QColor(208, 208, 208), border_width: int = 1,
+    def setBoxParmas(self, item_width:int = 0,
+                     border_width: int = 1,
+                     border_radius: int = 2,
+                     border_color: QColor = QColor(208, 208, 208),
                      icon_color: QColor = QColor(0, 129, 140)):
-        self.button.setParams(border_color=border_color, border_width=border_width, icon_color=icon_color)
+        self.button.setParams(box_width=item_width,border_color=border_color, border_width=border_width, icon_color=icon_color,border_radius=border_radius)
 
     def __setShadow(self):
         shadow = QGraphicsDropShadowEffect(self)
@@ -89,6 +102,8 @@ class CheckboxWidget(QWidget):
     def __ui_init(self):
         self.button = CheckBoxButton(self)
         self.button.clicked.connect(lambda: self.clicked.emit())
+
+
         self.label = CheckboxLabel(self)
 
         self.hbox = QHBoxLayout(self)
@@ -99,6 +114,9 @@ class CheckboxWidget(QWidget):
 
     def isClicked(self):
         return self.button.is_clicked
+
+    def setFont(self,font):
+        self.label.setFont(font)
 
     def paintEvent(self, event) -> None:
         super().paintEvent(event)
@@ -124,7 +142,7 @@ class CheckboxWidget(QWidget):
 
     def setText(self, text: str):
         self.label.setText(text)
-        
+
     def text(self):
         return self.label.text()
 

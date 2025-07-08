@@ -44,6 +44,7 @@ class SpeedometerBase(QWidget):
         self.color_arc_add: QColor = QColor()
         self.color_arc_sub: QColor = QColor()
         self.color_triangle: QColor = QColor()
+        self.setAttribute(Qt.WA_StyledBackground, True)
 
     def setParams(self, radius: int,
                   color_arc_add: QColor,
@@ -176,7 +177,7 @@ class Speedometer2(SpeedometerBase):
     def drawTriangle(self, painter: QPainter, radius_of_triangle: int = 0):
         painter.save()
         painter.rotate(radius_of_triangle + self.angle_start)
-
+        painter.setPen(Qt.NoPen)
         circle_radius_big = int(self.radius * 0.18)
         circle_radius_little = circle_radius_big // 2
 
